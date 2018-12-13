@@ -48,11 +48,6 @@
   <ItemGroup>
     <Compile Include="Controller\CardScannerController.cs" />
     <Compile Include="Model\DatabaseModel.cs" />
-    <Compile Include="NewDatabase2DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NewDatabase2DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="View\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,9 +56,6 @@
     </Compile>
     <Compile Include="StudentCardScanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="View\MainForm.resx">
-      <DependentUpon>MainView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -73,17 +65,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="NewDatabase2DataSet.xsc">
-      <DependentUpon>NewDatabase2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="NewDatabase2DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>NewDatabase2DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="NewDatabase2DataSet.xss">
-      <DependentUpon>NewDatabase2DataSet.xsd</DependentUpon>
-    </None>
+    <EmbeddedResource Include="View\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -125,11 +109,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="NewDatabase2.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

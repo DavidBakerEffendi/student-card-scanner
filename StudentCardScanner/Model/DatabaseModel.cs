@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Data;
+using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 
 namespace StudentCardScanner.Model
@@ -15,6 +17,7 @@ namespace StudentCardScanner.Model
 
         public const int SIGN_IN = 0x0;
         public const int SIGN_OUT = 0x1;
+        private const string DATE_TIME_FORMAT = "yyyy/MM/dd hh:mm:ss tt";
         private const string TABLE_NAME = "tbl_student_scans";
         private const string STUDENT_NO_COL = "student_number";
         private const string SIGN_IN_COL = "sign_in_time";
@@ -38,6 +41,13 @@ namespace StudentCardScanner.Model
             this.connString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + fileName + "; Jet OLEDB:Engine Type=5";
         }
 
+        public String getCurrentFileName()
+        {
+            Console.WriteLine("currentFile.LastIndexOf(\"\\\") == " + currentFile.LastIndexOf("\\"));
+            Console.WriteLine("currentFile.Length - 1 == " + (currentFile.Length - 1));
+            return currentFile.Substring(currentFile.LastIndexOf("\\") + 1, currentFile.Length - 1 - currentFile.LastIndexOf("\\"));
+        }
+
         // Creates a new access database and populates it with the templates table and columns.
         public bool CreateNewAccessDatabase()
         {
@@ -46,15 +56,21 @@ namespace StudentCardScanner.Model
             {
                 return result;
             }
+            if (File.Exists(@currentFile))
+            {
+                File.Delete(@currentFile);
+            }
 
             this.cat = new ADOX.Catalog();
             this.table = new ADOX.Table();
 
             // Create the table and it's fields. 
             table.Name = TABLE_NAME;
-            table.Columns.Append(STUDENT_NO_COL);
-            table.Columns.Append(SIGN_IN_COL);
-            table.Columns.Append(SIGN_OUT_COL);
+            table.Columns.Append(STUDENT_NO_COL, ADOX.DataTypeEnum.adLongVarWChar);
+            table.Columns.Append(SIGN_IN_COL, ADOX.DataTypeEnum.adDate);
+            table.Columns.Append(SIGN_OUT_COL, ADOX.DataTypeEnum.adDate);
+            table.Columns[SIGN_IN_COL].Attributes = ADOX.ColumnAttributesEnum.adColNullable;
+            table.Columns[SIGN_OUT_COL].Attributes = ADOX.ColumnAttributesEnum.adColNullable;
 
             try
             {
@@ -67,6 +83,7 @@ namespace StudentCardScanner.Model
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Error: " + ex);
                 result = false;
             }
 
@@ -75,15 +92,15 @@ namespace StudentCardScanner.Model
 
         internal void InsertData(string studentNumber, int mode)
         {
-            DateTime logTime = DateTime.Today;
-            String query = "INSERT INTO " + TABLE_NAME + "(" + STUDENT_NO_COL + "," + SIGN_IN_COL + ", " + SIGN_OUT_COL + ") ";
+            String logTime = DateTime.Now.ToString(DATE_TIME_FORMAT);
+            String query = "INSERT INTO " + TABLE_NAME + "(" + STUDENT_NO_COL + ", " + SIGN_IN_COL + ", " + SIGN_OUT_COL + ") ";
             switch (mode)
             {
                 case SIGN_IN:
-                    query += "VALUES (" + studentNumber + ", " + logTime + ", null);";
+                    query += "VALUES ('" + studentNumber + "', #" + logTime + "#, null);";
                     break;
                 case SIGN_OUT:
-                    query += "VALUES (" + studentNumber + ", null, " + logTime + ");";
+                    query += "VALUES ('" + studentNumber + "', null, #" + logTime + "#);";
                     break;
             }
 
@@ -163,11 +180,26 @@ namespace StudentCardScanner.Model
         // Populates the given data grid with what is currently in the database connected to the program 
         internal void PopulateDataGrid()
         {
-            this.OpenNewConnection();
-            ADODB.Recordset rs = new ADODB.Recordset();
-            rs.Open("Select * From " + TABLE_NAME, this.conn);
-            dataGrid.DataSource = rs;
-            this.CloseCurrentConnection();
+            OleDbConnection con = new OleDbConnection(this.connString);
+            OleDbCommand cmd = new OleDbCommand("Select * From " + TABLE_NAME, con);
+            con.Open();
+            cmd.CommandType = CommandType.Text;
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            DataTable scores = new DataTable();
+            da.Fill(scores);
+
+            this.dataGrid.Invoke(new MethodInvoker(() => {
+                this.dataGrid.DataSource = scores;
+                this.dataGrid.Columns[0].HeaderText = "Student Number";
+                this.dataGrid.Columns[1].HeaderText = "Sign In Time";
+                this.dataGrid.Columns[2].HeaderText = "Sign Out Time";
+                this.dataGrid.Columns[0].Width = 100;
+                this.dataGrid.Columns[1].Width = 170;
+                this.dataGrid.Columns[2].Width = 170;
+                this.dataGrid.ColumnHeadersHeight = 50;
+            }));
+
+            con.Close();
         }
 
         internal void PopulateDataGrid(DataGridView dataGrid)
@@ -175,5 +207,6 @@ namespace StudentCardScanner.Model
             this.dataGrid = dataGrid;
             this.PopulateDataGrid();
         }
+
     }
 }

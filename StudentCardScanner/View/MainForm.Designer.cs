@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelAside = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonDashboard = new System.Windows.Forms.Button();
@@ -71,6 +75,8 @@
             this.panelFileSelect = new System.Windows.Forms.Panel();
             this.labelSelectFile = new System.Windows.Forms.Label();
             this.tblstudentscansBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblDbOptionsHeading = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelAside.SuspendLayout();
             this.panelIcon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
@@ -85,6 +91,8 @@
             this.panelStatus.SuspendLayout();
             this.panelExport.SuspendLayout();
             this.panelFileSelect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tblstudentscansBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelAside
@@ -222,13 +230,14 @@
             // 
             // panelScanMain
             // 
+            this.panelScanMain.Controls.Add(this.panel1);
             this.panelScanMain.Controls.Add(this.panelLastSignIn);
             this.panelScanMain.Controls.Add(this.panelDatabase);
             this.panelScanMain.Controls.Add(this.panelSignMode);
             this.panelScanMain.ForeColor = System.Drawing.Color.White;
             this.panelScanMain.Location = new System.Drawing.Point(139, 75);
             this.panelScanMain.Name = "panelScanMain";
-            this.panelScanMain.Size = new System.Drawing.Size(704, 550);
+            this.panelScanMain.Size = new System.Drawing.Size(809, 550);
             this.panelScanMain.TabIndex = 6;
             this.panelScanMain.Visible = false;
             // 
@@ -239,9 +248,9 @@
             this.panelLastSignIn.Controls.Add(this.labelSignTime);
             this.panelLastSignIn.Controls.Add(this.labelStudentNumber);
             this.panelLastSignIn.Controls.Add(this.labelLastSignIn);
-            this.panelLastSignIn.Location = new System.Drawing.Point(14, 140);
+            this.panelLastSignIn.Location = new System.Drawing.Point(14, 396);
             this.panelLastSignIn.Name = "panelLastSignIn";
-            this.panelLastSignIn.Size = new System.Drawing.Size(238, 132);
+            this.panelLastSignIn.Size = new System.Drawing.Size(224, 132);
             this.panelLastSignIn.TabIndex = 4;
             // 
             // labelStudentSignTime
@@ -287,15 +296,11 @@
             // 
             this.panelDatabase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.panelDatabase.Controls.Add(this.labelDbName);
-            this.panelDatabase.Controls.Add(this.buttonSaveDb);
-            this.panelDatabase.Controls.Add(this.buttonDeleteDb);
-            this.panelDatabase.Controls.Add(this.buttonOpenDb);
-            this.panelDatabase.Controls.Add(this.buttonNew);
             this.panelDatabase.Controls.Add(this.labelDbHeading);
             this.panelDatabase.Controls.Add(this.dataGrid);
-            this.panelDatabase.Location = new System.Drawing.Point(268, 16);
+            this.panelDatabase.Location = new System.Drawing.Point(244, 16);
             this.panelDatabase.Name = "panelDatabase";
-            this.panelDatabase.Size = new System.Drawing.Size(424, 512);
+            this.panelDatabase.Size = new System.Drawing.Size(553, 512);
             this.panelDatabase.TabIndex = 3;
             // 
             // labelDbName
@@ -314,13 +319,15 @@
             this.buttonSaveDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSaveDb.Image = ((System.Drawing.Image)(resources.GetObject("buttonSaveDb.Image")));
             this.buttonSaveDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSaveDb.Location = new System.Drawing.Point(118, 464);
+            this.buttonSaveDb.Location = new System.Drawing.Point(15, 92);
             this.buttonSaveDb.Name = "buttonSaveDb";
             this.buttonSaveDb.Size = new System.Drawing.Size(92, 33);
             this.buttonSaveDb.TabIndex = 5;
             this.buttonSaveDb.Text = "Save";
             this.buttonSaveDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSaveDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonSaveDb.UseVisualStyleBackColor = false;
+            this.buttonSaveDb.Click += new System.EventHandler(this.buttonSaveDb_Click);
             // 
             // buttonDeleteDb
             // 
@@ -329,12 +336,13 @@
             this.buttonDeleteDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteDb.Image = ((System.Drawing.Image)(resources.GetObject("buttonDeleteDb.Image")));
             this.buttonDeleteDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteDb.Location = new System.Drawing.Point(314, 464);
+            this.buttonDeleteDb.Location = new System.Drawing.Point(113, 92);
             this.buttonDeleteDb.Name = "buttonDeleteDb";
             this.buttonDeleteDb.Size = new System.Drawing.Size(92, 33);
             this.buttonDeleteDb.TabIndex = 4;
             this.buttonDeleteDb.Text = "Delete";
             this.buttonDeleteDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonDeleteDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonDeleteDb.UseVisualStyleBackColor = false;
             // 
             // buttonOpenDb
@@ -344,12 +352,13 @@
             this.buttonOpenDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOpenDb.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpenDb.Image")));
             this.buttonOpenDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonOpenDb.Location = new System.Drawing.Point(216, 464);
+            this.buttonOpenDb.Location = new System.Drawing.Point(113, 53);
             this.buttonOpenDb.Name = "buttonOpenDb";
             this.buttonOpenDb.Size = new System.Drawing.Size(92, 33);
             this.buttonOpenDb.TabIndex = 3;
             this.buttonOpenDb.Text = "Open";
             this.buttonOpenDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonOpenDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonOpenDb.UseVisualStyleBackColor = false;
             this.buttonOpenDb.Click += new System.EventHandler(this.buttonOpenDb_Click);
             // 
@@ -360,12 +369,13 @@
             this.buttonNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNew.Image = ((System.Drawing.Image)(resources.GetObject("buttonNew.Image")));
             this.buttonNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNew.Location = new System.Drawing.Point(20, 464);
+            this.buttonNew.Location = new System.Drawing.Point(15, 53);
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(92, 33);
             this.buttonNew.TabIndex = 2;
             this.buttonNew.Text = "New";
             this.buttonNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonNew.UseVisualStyleBackColor = false;
             this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
@@ -384,10 +394,39 @@
             this.dataGrid.AllowUserToAddRows = false;
             this.dataGrid.AllowUserToDeleteRows = false;
             this.dataGrid.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
+            this.dataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGrid.Location = new System.Drawing.Point(20, 39);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
-            this.dataGrid.Size = new System.Drawing.Size(386, 419);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
+            this.dataGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGrid.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.dataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.dataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
+            this.dataGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGrid.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGrid.RowTemplate.ReadOnly = true;
+            this.dataGrid.Size = new System.Drawing.Size(509, 461);
             this.dataGrid.TabIndex = 0;
             // 
             // panelSignMode
@@ -396,9 +435,9 @@
             this.panelSignMode.Controls.Add(this.labelSignMode);
             this.panelSignMode.Controls.Add(this.radioSignOut);
             this.panelSignMode.Controls.Add(this.radioSignIn);
-            this.panelSignMode.Location = new System.Drawing.Point(14, 16);
+            this.panelSignMode.Location = new System.Drawing.Point(14, 275);
             this.panelSignMode.Name = "panelSignMode";
-            this.panelSignMode.Size = new System.Drawing.Size(238, 110);
+            this.panelSignMode.Size = new System.Drawing.Size(224, 110);
             this.panelSignMode.TabIndex = 2;
             // 
             // labelSignMode
@@ -453,7 +492,7 @@
             this.panelToolbar.ForeColor = System.Drawing.Color.White;
             this.panelToolbar.Location = new System.Drawing.Point(139, 0);
             this.panelToolbar.Name = "panelToolbar";
-            this.panelToolbar.Size = new System.Drawing.Size(704, 73);
+            this.panelToolbar.Size = new System.Drawing.Size(809, 73);
             this.panelToolbar.TabIndex = 5;
             this.panelToolbar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelToolbar_MouseDown);
             // 
@@ -465,7 +504,7 @@
             this.buttonMinimize.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMinimize.ForeColor = System.Drawing.Color.White;
             this.buttonMinimize.Image = ((System.Drawing.Image)(resources.GetObject("buttonMinimize.Image")));
-            this.buttonMinimize.Location = new System.Drawing.Point(595, 0);
+            this.buttonMinimize.Location = new System.Drawing.Point(700, 0);
             this.buttonMinimize.Name = "buttonMinimize";
             this.buttonMinimize.Size = new System.Drawing.Size(50, 30);
             this.buttonMinimize.TabIndex = 6;
@@ -482,7 +521,7 @@
             this.buttonExit.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonExit.ForeColor = System.Drawing.Color.White;
             this.buttonExit.Image = ((System.Drawing.Image)(resources.GetObject("buttonExit.Image")));
-            this.buttonExit.Location = new System.Drawing.Point(652, 0);
+            this.buttonExit.Location = new System.Drawing.Point(756, 0);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(50, 30);
             this.buttonExit.TabIndex = 5;
@@ -500,7 +539,7 @@
             this.panelDashboard.ForeColor = System.Drawing.Color.White;
             this.panelDashboard.Location = new System.Drawing.Point(139, 75);
             this.panelDashboard.Name = "panelDashboard";
-            this.panelDashboard.Size = new System.Drawing.Size(704, 550);
+            this.panelDashboard.Size = new System.Drawing.Size(809, 550);
             this.panelDashboard.TabIndex = 7;
             // 
             // panelDescription
@@ -547,7 +586,7 @@
             this.panelExport.ForeColor = System.Drawing.Color.White;
             this.panelExport.Location = new System.Drawing.Point(139, 75);
             this.panelExport.Name = "panelExport";
-            this.panelExport.Size = new System.Drawing.Size(704, 550);
+            this.panelExport.Size = new System.Drawing.Size(806, 550);
             this.panelExport.TabIndex = 8;
             // 
             // panelFileSelect
@@ -569,11 +608,34 @@
             this.labelSelectFile.TabIndex = 2;
             this.labelSelectFile.Text = "Select file:";
             // 
+            // lblDbOptionsHeading
+            // 
+            this.lblDbOptionsHeading.AutoSize = true;
+            this.lblDbOptionsHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDbOptionsHeading.Location = new System.Drawing.Point(10, 14);
+            this.lblDbOptionsHeading.Name = "lblDbOptionsHeading";
+            this.lblDbOptionsHeading.Size = new System.Drawing.Size(150, 19);
+            this.lblDbOptionsHeading.TabIndex = 2;
+            this.lblDbOptionsHeading.Text = "Database Options:";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panel1.Controls.Add(this.lblDbOptionsHeading);
+            this.panel1.Controls.Add(this.buttonDeleteDb);
+            this.panel1.Controls.Add(this.buttonSaveDb);
+            this.panel1.Controls.Add(this.buttonOpenDb);
+            this.panel1.Controls.Add(this.buttonNew);
+            this.panel1.Location = new System.Drawing.Point(14, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(224, 146);
+            this.panel1.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.ClientSize = new System.Drawing.Size(843, 628);
+            this.ClientSize = new System.Drawing.Size(948, 628);
             this.Controls.Add(this.panelScanMain);
             this.Controls.Add(this.panelDashboard);
             this.Controls.Add(this.panelExport);
@@ -607,6 +669,9 @@
             this.panelExport.ResumeLayout(false);
             this.panelFileSelect.ResumeLayout(false);
             this.panelFileSelect.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tblstudentscansBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -654,6 +719,8 @@
         private System.Windows.Forms.Panel panelDescription;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource tblstudentscansBindingSource;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblDbOptionsHeading;
     }
 }
 

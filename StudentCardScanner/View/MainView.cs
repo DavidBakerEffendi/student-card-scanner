@@ -138,6 +138,7 @@ namespace StudentCardScanner
                 this.databaseModel.SetCurrentFile(dlg.FileName);
                 this.databaseModel.CreateNewAccessDatabase();
                 this.databaseModel.PopulateDataGrid(this.dataGrid);
+                this.labelDbName.Text = this.databaseModel.getCurrentFileName();
             }
 
         }
@@ -148,7 +149,7 @@ namespace StudentCardScanner
             {
                 this.Controls[0].BeginInvoke((Action)(() =>
                 {
-                    this.labelStudentSignTime.Text = DateTime.Now.ToShortTimeString();
+                    this.labelStudentSignTime.Text = DateTime.Now.ToString("HH:mm:ss");
                     this.labelStudentNumber.Text = studentNumber;
                     this.databaseModel.PopulateDataGrid();
                     this.Focus();
@@ -170,8 +171,15 @@ namespace StudentCardScanner
             {
                 this.databaseModel.SetCurrentFile(dlg.FileName);
                 this.databaseModel.PopulateDataGrid(this.dataGrid);
+                this.labelDbName.Text = this.databaseModel.getCurrentFileName();
             }
         }
 
+        private void buttonSaveDb_Click(object sender, EventArgs e)
+        {
+            // THIS IS TO TEST dummy value
+            this.databaseModel.InsertData("20056354", this.GetSignMode());
+            this.databaseModel.PopulateDataGrid();
+        }
     }
 }

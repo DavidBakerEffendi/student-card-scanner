@@ -1,7 +1,6 @@
 c:\users\david\source\repos\StudentCardScanner\StudentCardScanner\bin\Debug\StudentCardScanner.exe.config
 c:\users\david\source\repos\StudentCardScanner\StudentCardScanner\bin\Debug\StudentCardScanner.exe
 c:\users\david\source\repos\StudentCardScanner\StudentCardScanner\bin\Debug\StudentCardScanner.pdb
-c:\users\david\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\StudentCardScanner.csprojAssemblyReference.cache
 c:\users\david\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\StudentCardScanner.MainForm.resources
 c:\users\david\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\StudentCardScanner.Properties.Resources.resources
 c:\users\david\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\StudentCardScanner.csproj.GenerateResource.cache
@@ -12,4 +11,4 @@ C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\Inte
 C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\Interop.ADOX.dll
 C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\Interop.MDACVer.dll
 C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\StudentCardScanner.csproj.ResolveComReference.cache
-C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\bin\Debug\NewDatabase2.accdb
+C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\StudentCardScanner.csprojAssemblyReference.cache

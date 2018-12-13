@@ -65,6 +65,8 @@ namespace StudentCardScanner.Controller
                 Console.WriteLine("Student number does exist, updating existing entry...");
                 this.databaseModel.UpdateData(studentNumber, this.form.GetSignMode());
             }
+
+            this.databaseModel.PopulateDataGrid();
         }
 
     }
