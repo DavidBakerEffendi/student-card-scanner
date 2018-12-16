@@ -43,8 +43,6 @@ namespace StudentCardScanner.Model
 
         public String getCurrentFileName()
         {
-            Console.WriteLine("currentFile.LastIndexOf(\"\\\") == " + currentFile.LastIndexOf("\\"));
-            Console.WriteLine("currentFile.Length - 1 == " + (currentFile.Length - 1));
             return currentFile.Substring(currentFile.LastIndexOf("\\") + 1, currentFile.Length - 1 - currentFile.LastIndexOf("\\"));
         }
 
@@ -90,7 +88,7 @@ namespace StudentCardScanner.Model
             return result;
         }
 
-        internal void InsertData(string studentNumber, int mode)
+        internal bool InsertData(string studentNumber, int mode)
         {
             String logTime = DateTime.Now.ToString(DATE_TIME_FORMAT);
             String query = "INSERT INTO " + TABLE_NAME + "(" + STUDENT_NO_COL + ", " + SIGN_IN_COL + ", " + SIGN_OUT_COL + ") ";
@@ -106,56 +104,170 @@ namespace StudentCardScanner.Model
 
             Console.WriteLine("Executing query: '" + query + "'");
 
+            OleDbCommand command = new OleDbCommand(query);
             try
             {
-                this.OpenNewConnection();
-                ADODB.Recordset rs = new ADODB.Recordset();
-                rs.Open(query, conn);
+                using (OleDbConnection connection = new OleDbConnection(this.connString))
+                {
+                    // Set the Connection to the new OleDbConnection.
+                    command.Connection = connection;
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: '" + ex.ToString() + "'");
+                return false;
             }
-            finally
+        }
+
+        internal bool UpdateData(string studentNumber, int mode)
+        {
+            String logTime = DateTime.Now.ToString(DATE_TIME_FORMAT);
+            String query = "UPDATE " + TABLE_NAME + " SET ";
+            switch (mode)
             {
-                this.CloseCurrentConnection();
+                case SIGN_IN:
+                    if (!IsFieldNullAtSUNumber(studentNumber, SIGN_IN_COL))
+                    {
+                        MessageBox.Show("\"" + studentNumber + "\" has already signed in!", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return false;
+                    }
+                    query += SIGN_IN_COL + "= #" + logTime + "#";
+                    break;
+                case SIGN_OUT:
+                    if (!IsFieldNullAtSUNumber(studentNumber, SIGN_OUT_COL))
+                    {
+                        MessageBox.Show("\"" + studentNumber + "\" has already signed out!", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return false;
+                    }
+                    query += SIGN_OUT_COL + "= #" + logTime + "#";
+                    break;
             }
-        }
+            query += " WHERE " + STUDENT_NO_COL + "='" + studentNumber + "';";
 
-        internal void UpdateData(string studentNumber, int mode)
-        {
+            Console.WriteLine("Executing query: '" + query + "'");
 
-        }
-
-        public bool StudentNumberExists(string studentNumber)
-        {
-            String query = "Select " + STUDENT_NO_COL + " from " + TABLE_NAME + " where " + STUDENT_NO_COL + "=" + studentNumber;
+            OleDbCommand command = new OleDbCommand(query);
             try
             {
-                this.OpenNewConnection();
-                ADODB.Recordset rs = new ADODB.Recordset();
-                rs.Open(query, conn);
-
-                Console.WriteLine("fields " + rs.Fields.Count);
-
-                if (rs.Fields.Count > 1)
+                using (OleDbConnection connection = new OleDbConnection(this.connString))
                 {
-                    return true;
+                    // Set the Connection to the new OleDbConnection.
+                    command.Connection = connection;
+                    connection.Open();
+                    command.ExecuteNonQuery();
                 }
-                else
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: '" + ex.ToString() + "'");
+                return false;
+            }
+        }
+
+        // Checks if the given student number exists in the current database.
+        public bool StudentNumberExists(string studentNumber)
+        {
+            String query = "SELECT " + STUDENT_NO_COL + " FROM " + TABLE_NAME + " WHERE " + STUDENT_NO_COL + "='" + studentNumber + "';";
+            OleDbCommand command = new OleDbCommand(query);
+ 
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(this.connString))
                 {
-                    return false;
+                    // Set the Connection to the new OleDbConnection.
+                    command.Connection = connection;
+                    connection.Open();
+                    OleDbDataReader reader = command.ExecuteReader();
+
+                    // Open the connection and execute the insert command.
+                    try
+                    {
+                        int count = 0;
+                        // Always call Read before accessing data.
+                        while (reader.Read())
+                        {
+                            count++;
+                        }
+                        
+                        if (count > 0)
+                        {
+                            return true;
+                        } else
+                        {
+                            return false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        return false;
+                    } finally
+                    {
+                        // Always call Close when done reading.
+                        reader.Close();
+                    }
+                    // The connection is automatically closed when the
+                    // code exits the using block.
                 }
             }
             catch (Exception)
             {
                 return false;
             }
-            finally
-            {
-                this.CloseCurrentConnection();
-            }
+        }
 
+        private bool IsFieldNullAtSUNumber(string studentNumber, string field)
+        {
+            String query = "SELECT " + field + " FROM " + TABLE_NAME + " WHERE " + STUDENT_NO_COL + "='" + studentNumber + "';";
+            OleDbCommand command = new OleDbCommand(query);
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(this.connString))
+                {
+                    // Set the Connection to the new OleDbConnection.
+                    command.Connection = connection;
+                    connection.Open();
+                    OleDbDataReader reader = command.ExecuteReader();
+
+                    // Open the connection and execute the insert command.
+                    try
+                    {
+                        // Always call Read before accessing data.
+                        reader.Read();
+                        Console.WriteLine("Checking if field '" + reader.GetFieldValue<Object>(0) + "' null: " + reader.GetFieldValue<Object>(0).Equals(null));
+                        if (!reader.GetFieldValue<Object>(0).Equals(null))
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        return true;
+                    }
+                    finally
+                    {
+                        // Always call Close when done reading.
+                        reader.Close();
+                    }
+                    // The connection is automatically closed when the
+                    // code exits the using block.
+                }
+            }
+            catch (Exception)
+            {
+                return true;
+            }
         }
 
         // Opens a new ADODB connection using the current file name
@@ -178,7 +290,7 @@ namespace StudentCardScanner.Model
         }
 
         // Populates the given data grid with what is currently in the database connected to the program 
-        internal void PopulateDataGrid()
+        internal void ReadFromDatabase()
         {
             OleDbConnection con = new OleDbConnection(this.connString);
             OleDbCommand cmd = new OleDbCommand("Select * From " + TABLE_NAME, con);
@@ -193,9 +305,9 @@ namespace StudentCardScanner.Model
                 this.dataGrid.Columns[0].HeaderText = "Student Number";
                 this.dataGrid.Columns[1].HeaderText = "Sign In Time";
                 this.dataGrid.Columns[2].HeaderText = "Sign Out Time";
-                this.dataGrid.Columns[0].Width = 100;
-                this.dataGrid.Columns[1].Width = 170;
-                this.dataGrid.Columns[2].Width = 170;
+                this.dataGrid.Columns[0].Width = 105;
+                this.dataGrid.Columns[1].Width = 180;
+                this.dataGrid.Columns[2].Width = 180;
                 this.dataGrid.ColumnHeadersHeight = 50;
             }));
 
@@ -205,7 +317,7 @@ namespace StudentCardScanner.Model
         internal void PopulateDataGrid(DataGridView dataGrid)
         {
             this.dataGrid = dataGrid;
-            this.PopulateDataGrid();
+            this.ReadFromDatabase();
         }
 
     }

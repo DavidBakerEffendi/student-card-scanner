@@ -26,12 +26,14 @@ namespace StudentCardScanner
 
         private DatabaseModel databaseModel;
         private SerialPortController serialPortController;
+        private NetworkController networkController;
 
         public MainForm()
         {
             InitializeComponent();
             this.databaseModel = new DatabaseModel();
             this.serialPortController = new SerialPortController(this, databaseModel);
+            this.networkController = new NetworkController(this, databaseModel);
         }
 
 
@@ -139,11 +141,12 @@ namespace StudentCardScanner
                 this.databaseModel.CreateNewAccessDatabase();
                 this.databaseModel.PopulateDataGrid(this.dataGrid);
                 this.labelDbName.Text = this.databaseModel.getCurrentFileName();
+                this.SetDatabasePanelEnabled(true);
             }
 
         }
 
-        public void setLastCardScanned(string studentNumber)
+        public void SetLastCardScanned(string studentNumber)
         {
             if (this.Controls[0].InvokeRequired)
             {
@@ -151,10 +154,15 @@ namespace StudentCardScanner
                 {
                     this.labelStudentSignTime.Text = DateTime.Now.ToString("HH:mm:ss");
                     this.labelStudentNumber.Text = studentNumber;
-                    this.databaseModel.PopulateDataGrid();
+                    this.databaseModel.ReadFromDatabase();
                     this.Focus();
                 }));
             }
+        }
+
+        public void SetDatabasePanelEnabled(bool enable)
+        {
+            this.panelDatabase.Enabled = enable;
         }
 
         private void buttonOpenDb_Click(object sender, EventArgs e)
@@ -172,14 +180,59 @@ namespace StudentCardScanner
                 this.databaseModel.SetCurrentFile(dlg.FileName);
                 this.databaseModel.PopulateDataGrid(this.dataGrid);
                 this.labelDbName.Text = this.databaseModel.getCurrentFileName();
+                this.SetDatabasePanelEnabled(true);
             }
         }
 
         private void buttonSaveDb_Click(object sender, EventArgs e)
         {
-            // THIS IS TO TEST dummy value
-            this.databaseModel.InsertData("20056354", this.GetSignMode());
-            this.databaseModel.PopulateDataGrid();
+            // TODO
+        }
+
+        // Returns true if the user has selected to read data from the scanner, false if otherwise.
+        public Boolean GetToggleScanner()
+        {
+            return this.checkToggleScanner.Checked;
+        }
+
+        public void SetScannerReady(bool flag)
+        {
+            this.checkToggleScanner.Enabled = flag;
+        }
+
+        public void SetScannerDriverStatus(bool flag)
+        {
+            this.BeginInvoke(new MethodInvoker(() =>
+            {
+                this.pictureDriverCheck.Visible = flag;
+                this.pictureDriverUncheck.Visible = !flag;
+            }));
+        }
+
+        public void SetScannerDeviceStatus(bool flag)
+        {
+            this.BeginInvoke(new MethodInvoker(() =>
+            {
+                this.pictureDeviceCheck.Visible = flag;
+                this.pictureDeviceUncheck.Visible = !flag;
+            }));
+        }
+
+        public void SetNetworkConnectedStatus(bool flag)
+        {
+            this.BeginInvoke(new MethodInvoker(() =>
+            {
+                this.pictureNetworkDisconnect.Visible = !flag;
+                this.pictureNetworkConnect.Visible = flag;
+            }));
+        }
+
+        public void SetNetworkLocalIP(string ip)
+        {
+            this.BeginInvoke(new MethodInvoker(() =>
+            {
+                this.labelLocalIP.Text = ip;
+            }));
         }
     }
 }

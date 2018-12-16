@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,6 +44,15 @@
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.labelLogo = new System.Windows.Forms.Label();
             this.panelScanMain = new System.Windows.Forms.Panel();
+            this.panelInputToggles = new System.Windows.Forms.Panel();
+            this.checkToggleScanner = new System.Windows.Forms.CheckBox();
+            this.captureHeading = new System.Windows.Forms.Label();
+            this.panelDatabaseOptions = new System.Windows.Forms.Panel();
+            this.lblDbOptionsHeading = new System.Windows.Forms.Label();
+            this.buttonDeleteDb = new System.Windows.Forms.Button();
+            this.buttonCloseDb = new System.Windows.Forms.Button();
+            this.buttonOpenDb = new System.Windows.Forms.Button();
+            this.buttonNew = new System.Windows.Forms.Button();
             this.panelLastSignIn = new System.Windows.Forms.Panel();
             this.labelStudentSignTime = new System.Windows.Forms.Label();
             this.labelSignTime = new System.Windows.Forms.Label();
@@ -52,10 +60,6 @@
             this.labelLastSignIn = new System.Windows.Forms.Label();
             this.panelDatabase = new System.Windows.Forms.Panel();
             this.labelDbName = new System.Windows.Forms.Label();
-            this.buttonSaveDb = new System.Windows.Forms.Button();
-            this.buttonDeleteDb = new System.Windows.Forms.Button();
-            this.buttonOpenDb = new System.Windows.Forms.Button();
-            this.buttonNew = new System.Windows.Forms.Button();
             this.labelDbHeading = new System.Windows.Forms.Label();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.panelSignMode = new System.Windows.Forms.Panel();
@@ -68,19 +72,35 @@
             this.buttonExit = new System.Windows.Forms.Button();
             this.panelDashboard = new System.Windows.Forms.Panel();
             this.panelDescription = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelDescriptionHeader = new System.Windows.Forms.Label();
             this.panelStatus = new System.Windows.Forms.Panel();
             this.labelStatus = new System.Windows.Forms.Label();
             this.panelExport = new System.Windows.Forms.Panel();
             this.panelFileSelect = new System.Windows.Forms.Panel();
             this.labelSelectFile = new System.Windows.Forms.Label();
-            this.tblstudentscansBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lblDbOptionsHeading = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelScannerStatus = new System.Windows.Forms.Panel();
+            this.labelScannerStatus = new System.Windows.Forms.Label();
+            this.pictureDriverCheck = new System.Windows.Forms.PictureBox();
+            this.pictureDeviceCheck = new System.Windows.Forms.PictureBox();
+            this.pictureDriverUncheck = new System.Windows.Forms.PictureBox();
+            this.pictureDeviceUncheck = new System.Windows.Forms.PictureBox();
+            this.labelDriverCheck = new System.Windows.Forms.Label();
+            this.labelDeviceConnected = new System.Windows.Forms.Label();
+            this.panelNetworkStatus = new System.Windows.Forms.Panel();
+            this.labelNetworkStatus = new System.Windows.Forms.Label();
+            this.labelNetworkConnected = new System.Windows.Forms.Label();
+            this.pictureNetworkDisconnect = new System.Windows.Forms.PictureBox();
+            this.pictureNetworkConnect = new System.Windows.Forms.PictureBox();
+            this.labelLocalIPDesc = new System.Windows.Forms.Label();
+            this.labelLocalIP = new System.Windows.Forms.Label();
+            this.labelDescriptionBody = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panelAside.SuspendLayout();
             this.panelIcon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.panelScanMain.SuspendLayout();
+            this.panelInputToggles.SuspendLayout();
+            this.panelDatabaseOptions.SuspendLayout();
             this.panelLastSignIn.SuspendLayout();
             this.panelDatabase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
@@ -91,8 +111,14 @@
             this.panelStatus.SuspendLayout();
             this.panelExport.SuspendLayout();
             this.panelFileSelect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tblstudentscansBindingSource)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panelScannerStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDriverCheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDeviceCheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDriverUncheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDeviceUncheck)).BeginInit();
+            this.panelNetworkStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureNetworkDisconnect)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureNetworkConnect)).BeginInit();
             this.SuspendLayout();
             // 
             // panelAside
@@ -230,7 +256,8 @@
             // 
             // panelScanMain
             // 
-            this.panelScanMain.Controls.Add(this.panel1);
+            this.panelScanMain.Controls.Add(this.panelInputToggles);
+            this.panelScanMain.Controls.Add(this.panelDatabaseOptions);
             this.panelScanMain.Controls.Add(this.panelLastSignIn);
             this.panelScanMain.Controls.Add(this.panelDatabase);
             this.panelScanMain.Controls.Add(this.panelSignMode);
@@ -241,6 +268,131 @@
             this.panelScanMain.TabIndex = 6;
             this.panelScanMain.Visible = false;
             // 
+            // panelInputToggles
+            // 
+            this.panelInputToggles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panelInputToggles.Controls.Add(this.checkBox1);
+            this.panelInputToggles.Controls.Add(this.checkToggleScanner);
+            this.panelInputToggles.Controls.Add(this.captureHeading);
+            this.panelInputToggles.Location = new System.Drawing.Point(14, 155);
+            this.panelInputToggles.Name = "panelInputToggles";
+            this.panelInputToggles.Size = new System.Drawing.Size(224, 114);
+            this.panelInputToggles.TabIndex = 6;
+            // 
+            // checkToggleScanner
+            // 
+            this.checkToggleScanner.AutoSize = true;
+            this.checkToggleScanner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkToggleScanner.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.checkToggleScanner.Location = new System.Drawing.Point(14, 43);
+            this.checkToggleScanner.Name = "checkToggleScanner";
+            this.checkToggleScanner.Size = new System.Drawing.Size(130, 23);
+            this.checkToggleScanner.TabIndex = 3;
+            this.checkToggleScanner.Text = "Toggle Scanner";
+            this.checkToggleScanner.UseVisualStyleBackColor = true;
+            // 
+            // captureHeading
+            // 
+            this.captureHeading.AutoSize = true;
+            this.captureHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.captureHeading.Location = new System.Drawing.Point(10, 14);
+            this.captureHeading.Name = "captureHeading";
+            this.captureHeading.Size = new System.Drawing.Size(111, 19);
+            this.captureHeading.TabIndex = 2;
+            this.captureHeading.Text = "Input Toggles";
+            // 
+            // panelDatabaseOptions
+            // 
+            this.panelDatabaseOptions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panelDatabaseOptions.Controls.Add(this.lblDbOptionsHeading);
+            this.panelDatabaseOptions.Controls.Add(this.buttonDeleteDb);
+            this.panelDatabaseOptions.Controls.Add(this.buttonCloseDb);
+            this.panelDatabaseOptions.Controls.Add(this.buttonOpenDb);
+            this.panelDatabaseOptions.Controls.Add(this.buttonNew);
+            this.panelDatabaseOptions.Location = new System.Drawing.Point(14, 16);
+            this.panelDatabaseOptions.Name = "panelDatabaseOptions";
+            this.panelDatabaseOptions.Size = new System.Drawing.Size(224, 133);
+            this.panelDatabaseOptions.TabIndex = 5;
+            // 
+            // lblDbOptionsHeading
+            // 
+            this.lblDbOptionsHeading.AutoSize = true;
+            this.lblDbOptionsHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDbOptionsHeading.Location = new System.Drawing.Point(10, 14);
+            this.lblDbOptionsHeading.Name = "lblDbOptionsHeading";
+            this.lblDbOptionsHeading.Size = new System.Drawing.Size(150, 19);
+            this.lblDbOptionsHeading.TabIndex = 2;
+            this.lblDbOptionsHeading.Text = "Database Options:";
+            // 
+            // buttonDeleteDb
+            // 
+            this.buttonDeleteDb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.buttonDeleteDb.Enabled = false;
+            this.buttonDeleteDb.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteDb.Image = ((System.Drawing.Image)(resources.GetObject("buttonDeleteDb.Image")));
+            this.buttonDeleteDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteDb.Location = new System.Drawing.Point(14, 92);
+            this.buttonDeleteDb.Name = "buttonDeleteDb";
+            this.buttonDeleteDb.Size = new System.Drawing.Size(92, 33);
+            this.buttonDeleteDb.TabIndex = 4;
+            this.buttonDeleteDb.Text = "Delete";
+            this.buttonDeleteDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonDeleteDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonDeleteDb.UseVisualStyleBackColor = false;
+            // 
+            // buttonCloseDb
+            // 
+            this.buttonCloseDb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.buttonCloseDb.Enabled = false;
+            this.buttonCloseDb.FlatAppearance.BorderSize = 0;
+            this.buttonCloseDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCloseDb.Image = ((System.Drawing.Image)(resources.GetObject("buttonCloseDb.Image")));
+            this.buttonCloseDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonCloseDb.Location = new System.Drawing.Point(113, 92);
+            this.buttonCloseDb.Name = "buttonCloseDb";
+            this.buttonCloseDb.Size = new System.Drawing.Size(92, 33);
+            this.buttonCloseDb.TabIndex = 5;
+            this.buttonCloseDb.Text = "Close";
+            this.buttonCloseDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonCloseDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonCloseDb.UseVisualStyleBackColor = false;
+            this.buttonCloseDb.Click += new System.EventHandler(this.buttonSaveDb_Click);
+            // 
+            // buttonOpenDb
+            // 
+            this.buttonOpenDb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.buttonOpenDb.FlatAppearance.BorderSize = 0;
+            this.buttonOpenDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenDb.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpenDb.Image")));
+            this.buttonOpenDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonOpenDb.Location = new System.Drawing.Point(113, 53);
+            this.buttonOpenDb.Name = "buttonOpenDb";
+            this.buttonOpenDb.Size = new System.Drawing.Size(92, 33);
+            this.buttonOpenDb.TabIndex = 3;
+            this.buttonOpenDb.Text = "Open";
+            this.buttonOpenDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonOpenDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonOpenDb.UseVisualStyleBackColor = false;
+            this.buttonOpenDb.Click += new System.EventHandler(this.buttonOpenDb_Click);
+            // 
+            // buttonNew
+            // 
+            this.buttonNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.buttonNew.FlatAppearance.BorderSize = 0;
+            this.buttonNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNew.Image = ((System.Drawing.Image)(resources.GetObject("buttonNew.Image")));
+            this.buttonNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNew.Location = new System.Drawing.Point(15, 53);
+            this.buttonNew.Name = "buttonNew";
+            this.buttonNew.Size = new System.Drawing.Size(92, 33);
+            this.buttonNew.TabIndex = 2;
+            this.buttonNew.Text = "New";
+            this.buttonNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonNew.UseVisualStyleBackColor = false;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            // 
             // panelLastSignIn
             // 
             this.panelLastSignIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
@@ -248,9 +400,9 @@
             this.panelLastSignIn.Controls.Add(this.labelSignTime);
             this.panelLastSignIn.Controls.Add(this.labelStudentNumber);
             this.panelLastSignIn.Controls.Add(this.labelLastSignIn);
-            this.panelLastSignIn.Location = new System.Drawing.Point(14, 396);
+            this.panelLastSignIn.Location = new System.Drawing.Point(14, 391);
             this.panelLastSignIn.Name = "panelLastSignIn";
-            this.panelLastSignIn.Size = new System.Drawing.Size(224, 132);
+            this.panelLastSignIn.Size = new System.Drawing.Size(224, 137);
             this.panelLastSignIn.TabIndex = 4;
             // 
             // labelStudentSignTime
@@ -298,6 +450,7 @@
             this.panelDatabase.Controls.Add(this.labelDbName);
             this.panelDatabase.Controls.Add(this.labelDbHeading);
             this.panelDatabase.Controls.Add(this.dataGrid);
+            this.panelDatabase.Enabled = false;
             this.panelDatabase.Location = new System.Drawing.Point(244, 16);
             this.panelDatabase.Name = "panelDatabase";
             this.panelDatabase.Size = new System.Drawing.Size(553, 512);
@@ -311,73 +464,6 @@
             this.labelDbName.Name = "labelDbName";
             this.labelDbName.Size = new System.Drawing.Size(0, 19);
             this.labelDbName.TabIndex = 6;
-            // 
-            // buttonSaveDb
-            // 
-            this.buttonSaveDb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.buttonSaveDb.FlatAppearance.BorderSize = 0;
-            this.buttonSaveDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSaveDb.Image = ((System.Drawing.Image)(resources.GetObject("buttonSaveDb.Image")));
-            this.buttonSaveDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSaveDb.Location = new System.Drawing.Point(15, 92);
-            this.buttonSaveDb.Name = "buttonSaveDb";
-            this.buttonSaveDb.Size = new System.Drawing.Size(92, 33);
-            this.buttonSaveDb.TabIndex = 5;
-            this.buttonSaveDb.Text = "Save";
-            this.buttonSaveDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSaveDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonSaveDb.UseVisualStyleBackColor = false;
-            this.buttonSaveDb.Click += new System.EventHandler(this.buttonSaveDb_Click);
-            // 
-            // buttonDeleteDb
-            // 
-            this.buttonDeleteDb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.buttonDeleteDb.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteDb.Image = ((System.Drawing.Image)(resources.GetObject("buttonDeleteDb.Image")));
-            this.buttonDeleteDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteDb.Location = new System.Drawing.Point(113, 92);
-            this.buttonDeleteDb.Name = "buttonDeleteDb";
-            this.buttonDeleteDb.Size = new System.Drawing.Size(92, 33);
-            this.buttonDeleteDb.TabIndex = 4;
-            this.buttonDeleteDb.Text = "Delete";
-            this.buttonDeleteDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonDeleteDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonDeleteDb.UseVisualStyleBackColor = false;
-            // 
-            // buttonOpenDb
-            // 
-            this.buttonOpenDb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.buttonOpenDb.FlatAppearance.BorderSize = 0;
-            this.buttonOpenDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpenDb.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpenDb.Image")));
-            this.buttonOpenDb.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonOpenDb.Location = new System.Drawing.Point(113, 53);
-            this.buttonOpenDb.Name = "buttonOpenDb";
-            this.buttonOpenDb.Size = new System.Drawing.Size(92, 33);
-            this.buttonOpenDb.TabIndex = 3;
-            this.buttonOpenDb.Text = "Open";
-            this.buttonOpenDb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonOpenDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonOpenDb.UseVisualStyleBackColor = false;
-            this.buttonOpenDb.Click += new System.EventHandler(this.buttonOpenDb_Click);
-            // 
-            // buttonNew
-            // 
-            this.buttonNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.buttonNew.FlatAppearance.BorderSize = 0;
-            this.buttonNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNew.Image = ((System.Drawing.Image)(resources.GetObject("buttonNew.Image")));
-            this.buttonNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonNew.Location = new System.Drawing.Point(15, 53);
-            this.buttonNew.Name = "buttonNew";
-            this.buttonNew.Size = new System.Drawing.Size(92, 33);
-            this.buttonNew.TabIndex = 2;
-            this.buttonNew.Text = "New";
-            this.buttonNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonNew.UseVisualStyleBackColor = false;
-            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // labelDbHeading
             // 
@@ -453,9 +539,11 @@
             // radioSignOut
             // 
             this.radioSignOut.AutoSize = true;
+            this.radioSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioSignOut.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.radioSignOut.Location = new System.Drawing.Point(14, 70);
             this.radioSignOut.Name = "radioSignOut";
-            this.radioSignOut.Size = new System.Drawing.Size(95, 25);
+            this.radioSignOut.Size = new System.Drawing.Size(84, 23);
             this.radioSignOut.TabIndex = 1;
             this.radioSignOut.Text = "Sign Out";
             this.radioSignOut.UseVisualStyleBackColor = true;
@@ -464,9 +552,11 @@
             // 
             this.radioSignIn.AutoSize = true;
             this.radioSignIn.Checked = true;
-            this.radioSignIn.Location = new System.Drawing.Point(14, 39);
+            this.radioSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioSignIn.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.radioSignIn.Location = new System.Drawing.Point(14, 44);
             this.radioSignIn.Name = "radioSignIn";
-            this.radioSignIn.Size = new System.Drawing.Size(79, 25);
+            this.radioSignIn.Size = new System.Drawing.Size(70, 23);
             this.radioSignIn.TabIndex = 0;
             this.radioSignIn.TabStop = true;
             this.radioSignIn.Text = "Sign In";
@@ -545,29 +635,32 @@
             // panelDescription
             // 
             this.panelDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.panelDescription.Controls.Add(this.label1);
+            this.panelDescription.Controls.Add(this.labelDescriptionBody);
+            this.panelDescription.Controls.Add(this.labelDescriptionHeader);
             this.panelDescription.Location = new System.Drawing.Point(14, 16);
             this.panelDescription.Name = "panelDescription";
-            this.panelDescription.Size = new System.Drawing.Size(672, 202);
+            this.panelDescription.Size = new System.Drawing.Size(783, 202);
             this.panelDescription.TabIndex = 3;
             // 
-            // label1
+            // labelDescriptionHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Description";
+            this.labelDescriptionHeader.AutoSize = true;
+            this.labelDescriptionHeader.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescriptionHeader.Location = new System.Drawing.Point(13, 14);
+            this.labelDescriptionHeader.Name = "labelDescriptionHeader";
+            this.labelDescriptionHeader.Size = new System.Drawing.Size(94, 19);
+            this.labelDescriptionHeader.TabIndex = 2;
+            this.labelDescriptionHeader.Text = "Description";
             // 
             // panelStatus
             // 
             this.panelStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panelStatus.Controls.Add(this.panelNetworkStatus);
+            this.panelStatus.Controls.Add(this.panelScannerStatus);
             this.panelStatus.Controls.Add(this.labelStatus);
             this.panelStatus.Location = new System.Drawing.Point(14, 239);
             this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(672, 294);
+            this.panelStatus.Size = new System.Drawing.Size(780, 294);
             this.panelStatus.TabIndex = 2;
             // 
             // labelStatus
@@ -608,28 +701,189 @@
             this.labelSelectFile.TabIndex = 2;
             this.labelSelectFile.Text = "Select file:";
             // 
-            // lblDbOptionsHeading
+            // panelScannerStatus
             // 
-            this.lblDbOptionsHeading.AutoSize = true;
-            this.lblDbOptionsHeading.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDbOptionsHeading.Location = new System.Drawing.Point(10, 14);
-            this.lblDbOptionsHeading.Name = "lblDbOptionsHeading";
-            this.lblDbOptionsHeading.Size = new System.Drawing.Size(150, 19);
-            this.lblDbOptionsHeading.TabIndex = 2;
-            this.lblDbOptionsHeading.Text = "Database Options:";
+            this.panelScannerStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.panelScannerStatus.Controls.Add(this.labelDeviceConnected);
+            this.panelScannerStatus.Controls.Add(this.labelDriverCheck);
+            this.panelScannerStatus.Controls.Add(this.pictureDeviceCheck);
+            this.panelScannerStatus.Controls.Add(this.pictureDeviceUncheck);
+            this.panelScannerStatus.Controls.Add(this.pictureDriverUncheck);
+            this.panelScannerStatus.Controls.Add(this.pictureDriverCheck);
+            this.panelScannerStatus.Controls.Add(this.labelScannerStatus);
+            this.panelScannerStatus.Location = new System.Drawing.Point(17, 46);
+            this.panelScannerStatus.Name = "panelScannerStatus";
+            this.panelScannerStatus.Size = new System.Drawing.Size(263, 106);
+            this.panelScannerStatus.TabIndex = 4;
             // 
-            // panel1
+            // labelScannerStatus
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.panel1.Controls.Add(this.lblDbOptionsHeading);
-            this.panel1.Controls.Add(this.buttonDeleteDb);
-            this.panel1.Controls.Add(this.buttonSaveDb);
-            this.panel1.Controls.Add(this.buttonOpenDb);
-            this.panel1.Controls.Add(this.buttonNew);
-            this.panel1.Location = new System.Drawing.Point(14, 16);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(224, 146);
-            this.panel1.TabIndex = 5;
+            this.labelScannerStatus.AutoSize = true;
+            this.labelScannerStatus.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold);
+            this.labelScannerStatus.Location = new System.Drawing.Point(15, 6);
+            this.labelScannerStatus.Name = "labelScannerStatus";
+            this.labelScannerStatus.Size = new System.Drawing.Size(69, 18);
+            this.labelScannerStatus.TabIndex = 4;
+            this.labelScannerStatus.Text = "Scanner";
+            // 
+            // pictureDriverCheck
+            // 
+            this.pictureDriverCheck.Image = ((System.Drawing.Image)(resources.GetObject("pictureDriverCheck.Image")));
+            this.pictureDriverCheck.Location = new System.Drawing.Point(18, 38);
+            this.pictureDriverCheck.Name = "pictureDriverCheck";
+            this.pictureDriverCheck.Size = new System.Drawing.Size(16, 16);
+            this.pictureDriverCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureDriverCheck.TabIndex = 5;
+            this.pictureDriverCheck.TabStop = false;
+            this.pictureDriverCheck.Visible = false;
+            // 
+            // pictureDeviceCheck
+            // 
+            this.pictureDeviceCheck.Image = ((System.Drawing.Image)(resources.GetObject("pictureDeviceCheck.Image")));
+            this.pictureDeviceCheck.Location = new System.Drawing.Point(18, 68);
+            this.pictureDeviceCheck.Name = "pictureDeviceCheck";
+            this.pictureDeviceCheck.Size = new System.Drawing.Size(16, 16);
+            this.pictureDeviceCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureDeviceCheck.TabIndex = 5;
+            this.pictureDeviceCheck.TabStop = false;
+            this.pictureDeviceCheck.Visible = false;
+            // 
+            // pictureDriverUncheck
+            // 
+            this.pictureDriverUncheck.Image = ((System.Drawing.Image)(resources.GetObject("pictureDriverUncheck.Image")));
+            this.pictureDriverUncheck.Location = new System.Drawing.Point(18, 37);
+            this.pictureDriverUncheck.Name = "pictureDriverUncheck";
+            this.pictureDriverUncheck.Size = new System.Drawing.Size(16, 16);
+            this.pictureDriverUncheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureDriverUncheck.TabIndex = 5;
+            this.pictureDriverUncheck.TabStop = false;
+            this.pictureDriverUncheck.Visible = false;
+            // 
+            // pictureDeviceUncheck
+            // 
+            this.pictureDeviceUncheck.Image = ((System.Drawing.Image)(resources.GetObject("pictureDeviceUncheck.Image")));
+            this.pictureDeviceUncheck.Location = new System.Drawing.Point(18, 68);
+            this.pictureDeviceUncheck.Name = "pictureDeviceUncheck";
+            this.pictureDeviceUncheck.Size = new System.Drawing.Size(16, 16);
+            this.pictureDeviceUncheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureDeviceUncheck.TabIndex = 5;
+            this.pictureDeviceUncheck.TabStop = false;
+            this.pictureDeviceUncheck.Visible = false;
+            // 
+            // labelDriverCheck
+            // 
+            this.labelDriverCheck.AutoSize = true;
+            this.labelDriverCheck.Location = new System.Drawing.Point(49, 34);
+            this.labelDriverCheck.Name = "labelDriverCheck";
+            this.labelDriverCheck.Size = new System.Drawing.Size(125, 21);
+            this.labelDriverCheck.TabIndex = 6;
+            this.labelDriverCheck.Text = "Driver Installed";
+            // 
+            // labelDeviceConnected
+            // 
+            this.labelDeviceConnected.AutoSize = true;
+            this.labelDeviceConnected.Location = new System.Drawing.Point(49, 65);
+            this.labelDeviceConnected.Name = "labelDeviceConnected";
+            this.labelDeviceConnected.Size = new System.Drawing.Size(160, 21);
+            this.labelDeviceConnected.TabIndex = 6;
+            this.labelDeviceConnected.Text = "Device Connected";
+            // 
+            // panelNetworkStatus
+            // 
+            this.panelNetworkStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.panelNetworkStatus.Controls.Add(this.labelLocalIP);
+            this.panelNetworkStatus.Controls.Add(this.labelLocalIPDesc);
+            this.panelNetworkStatus.Controls.Add(this.pictureNetworkConnect);
+            this.panelNetworkStatus.Controls.Add(this.labelNetworkConnected);
+            this.panelNetworkStatus.Controls.Add(this.pictureNetworkDisconnect);
+            this.panelNetworkStatus.Controls.Add(this.labelNetworkStatus);
+            this.panelNetworkStatus.Location = new System.Drawing.Point(17, 162);
+            this.panelNetworkStatus.Name = "panelNetworkStatus";
+            this.panelNetworkStatus.Size = new System.Drawing.Size(263, 110);
+            this.panelNetworkStatus.TabIndex = 5;
+            // 
+            // labelNetworkStatus
+            // 
+            this.labelNetworkStatus.AutoSize = true;
+            this.labelNetworkStatus.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold);
+            this.labelNetworkStatus.Location = new System.Drawing.Point(15, 9);
+            this.labelNetworkStatus.Name = "labelNetworkStatus";
+            this.labelNetworkStatus.Size = new System.Drawing.Size(69, 18);
+            this.labelNetworkStatus.TabIndex = 5;
+            this.labelNetworkStatus.Text = "Network";
+            // 
+            // labelNetworkConnected
+            // 
+            this.labelNetworkConnected.AutoSize = true;
+            this.labelNetworkConnected.Location = new System.Drawing.Point(49, 39);
+            this.labelNetworkConnected.Name = "labelNetworkConnected";
+            this.labelNetworkConnected.Size = new System.Drawing.Size(190, 21);
+            this.labelNetworkConnected.TabIndex = 8;
+            this.labelNetworkConnected.Text = "Connected to network";
+            // 
+            // pictureNetworkDisconnect
+            // 
+            this.pictureNetworkDisconnect.Image = ((System.Drawing.Image)(resources.GetObject("pictureNetworkDisconnect.Image")));
+            this.pictureNetworkDisconnect.Location = new System.Drawing.Point(18, 42);
+            this.pictureNetworkDisconnect.Name = "pictureNetworkDisconnect";
+            this.pictureNetworkDisconnect.Size = new System.Drawing.Size(16, 16);
+            this.pictureNetworkDisconnect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureNetworkDisconnect.TabIndex = 7;
+            this.pictureNetworkDisconnect.TabStop = false;
+            this.pictureNetworkDisconnect.Visible = false;
+            // 
+            // pictureNetworkConnect
+            // 
+            this.pictureNetworkConnect.Image = ((System.Drawing.Image)(resources.GetObject("pictureNetworkConnect.Image")));
+            this.pictureNetworkConnect.Location = new System.Drawing.Point(18, 42);
+            this.pictureNetworkConnect.Name = "pictureNetworkConnect";
+            this.pictureNetworkConnect.Size = new System.Drawing.Size(16, 16);
+            this.pictureNetworkConnect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureNetworkConnect.TabIndex = 9;
+            this.pictureNetworkConnect.TabStop = false;
+            this.pictureNetworkConnect.Visible = false;
+            // 
+            // labelLocalIPDesc
+            // 
+            this.labelLocalIPDesc.AutoSize = true;
+            this.labelLocalIPDesc.Location = new System.Drawing.Point(18, 70);
+            this.labelLocalIPDesc.Name = "labelLocalIPDesc";
+            this.labelLocalIPDesc.Size = new System.Drawing.Size(73, 21);
+            this.labelLocalIPDesc.TabIndex = 10;
+            this.labelLocalIPDesc.Text = "Local IP:";
+            // 
+            // labelLocalIP
+            // 
+            this.labelLocalIP.AutoSize = true;
+            this.labelLocalIP.Location = new System.Drawing.Point(92, 70);
+            this.labelLocalIP.Name = "labelLocalIP";
+            this.labelLocalIP.Size = new System.Drawing.Size(44, 21);
+            this.labelLocalIP.TabIndex = 11;
+            this.labelLocalIP.Text = "<IP>";
+            // 
+            // labelDescriptionBody
+            // 
+            this.labelDescriptionBody.AutoSize = true;
+            this.labelDescriptionBody.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.labelDescriptionBody.Location = new System.Drawing.Point(14, 39);
+            this.labelDescriptionBody.MaximumSize = new System.Drawing.Size(765, 0);
+            this.labelDescriptionBody.Name = "labelDescriptionBody";
+            this.labelDescriptionBody.Size = new System.Drawing.Size(765, 171);
+            this.labelDescriptionBody.TabIndex = 3;
+            this.labelDescriptionBody.Text = resources.GetString("labelDescriptionBody.Text");
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.checkBox1.Location = new System.Drawing.Point(14, 74);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(198, 23);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "Toggle Smartphone Input";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -652,6 +906,10 @@
             this.panelIcon.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.panelScanMain.ResumeLayout(false);
+            this.panelInputToggles.ResumeLayout(false);
+            this.panelInputToggles.PerformLayout();
+            this.panelDatabaseOptions.ResumeLayout(false);
+            this.panelDatabaseOptions.PerformLayout();
             this.panelLastSignIn.ResumeLayout(false);
             this.panelLastSignIn.PerformLayout();
             this.panelDatabase.ResumeLayout(false);
@@ -669,9 +927,16 @@
             this.panelExport.ResumeLayout(false);
             this.panelFileSelect.ResumeLayout(false);
             this.panelFileSelect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tblstudentscansBindingSource)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelScannerStatus.ResumeLayout(false);
+            this.panelScannerStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDriverCheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDeviceCheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDriverUncheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDeviceUncheck)).EndInit();
+            this.panelNetworkStatus.ResumeLayout(false);
+            this.panelNetworkStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureNetworkDisconnect)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureNetworkConnect)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -697,7 +962,7 @@
         private System.Windows.Forms.Panel panelSignMode;
         private System.Windows.Forms.Panel panelDatabase;
         private System.Windows.Forms.Label labelDbName;
-        private System.Windows.Forms.Button buttonSaveDb;
+        private System.Windows.Forms.Button buttonCloseDb;
         private System.Windows.Forms.Button buttonDeleteDb;
         private System.Windows.Forms.Button buttonOpenDb;
         private System.Windows.Forms.Button buttonNew;
@@ -717,10 +982,29 @@
         private System.Windows.Forms.Panel panelFileSelect;
         private System.Windows.Forms.Label labelSelectFile;
         private System.Windows.Forms.Panel panelDescription;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource tblstudentscansBindingSource;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelDescriptionHeader;
+        private System.Windows.Forms.Panel panelDatabaseOptions;
         private System.Windows.Forms.Label lblDbOptionsHeading;
+        private System.Windows.Forms.Panel panelInputToggles;
+        private System.Windows.Forms.CheckBox checkToggleScanner;
+        private System.Windows.Forms.Label captureHeading;
+        private System.Windows.Forms.Panel panelScannerStatus;
+        private System.Windows.Forms.Label labelDeviceConnected;
+        private System.Windows.Forms.Label labelDriverCheck;
+        private System.Windows.Forms.PictureBox pictureDeviceCheck;
+        private System.Windows.Forms.PictureBox pictureDeviceUncheck;
+        private System.Windows.Forms.PictureBox pictureDriverUncheck;
+        private System.Windows.Forms.PictureBox pictureDriverCheck;
+        private System.Windows.Forms.Label labelScannerStatus;
+        private System.Windows.Forms.Panel panelNetworkStatus;
+        private System.Windows.Forms.Label labelNetworkStatus;
+        private System.Windows.Forms.PictureBox pictureNetworkConnect;
+        private System.Windows.Forms.Label labelNetworkConnected;
+        private System.Windows.Forms.PictureBox pictureNetworkDisconnect;
+        private System.Windows.Forms.Label labelLocalIP;
+        private System.Windows.Forms.Label labelLocalIPDesc;
+        private System.Windows.Forms.Label labelDescriptionBody;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
