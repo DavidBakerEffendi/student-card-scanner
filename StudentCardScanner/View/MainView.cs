@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO.Ports;
+﻿using StudentCardScanner.Controller;
 using StudentCardScanner.Model;
-using StudentCardScanner.Controller;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace StudentCardScanner
 {
@@ -34,6 +27,9 @@ namespace StudentCardScanner
             this.databaseModel = new DatabaseModel();
             this.serialPortController = new SerialPortController(this, databaseModel);
             this.networkController = new NetworkController(this, databaseModel);
+            this.panelDashboard.Visible = true;
+            this.panelScanMain.Visible = false;
+            this.panelExport.Visible = false;
         }
 
 
@@ -73,7 +69,7 @@ namespace StudentCardScanner
             labelHeading.Text = buttonExport.Text;
         }
 
-        private void linkTo(String url)
+        private void LinkTo(String url)
         {
             try
             {
@@ -88,7 +84,7 @@ namespace StudentCardScanner
 
         private void linkGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            linkTo("https://github.com/DavidBakerEffendi");
+            LinkTo("https://github.com/DavidBakerEffendi");
         }
 
         public int GetSignMode()
@@ -119,9 +115,9 @@ namespace StudentCardScanner
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureLogo_Click(object sender, EventArgs e)
         {
-            linkTo("https://github.com/DavidBakerEffendi");
+            LinkTo("https://github.com/DavidBakerEffendi/student-card-scanner");
         }
 
         private void buttonNew_Click(object sender, EventArgs e)
@@ -140,10 +136,11 @@ namespace StudentCardScanner
                 this.databaseModel.SetCurrentFile(dlg.FileName);
                 this.databaseModel.CreateNewAccessDatabase();
                 this.databaseModel.PopulateDataGrid(this.dataGrid);
-                this.labelDbName.Text = this.databaseModel.getCurrentFileName();
+                this.labelDbName.Text = this.databaseModel.GetCurrentFileName();
                 this.SetDatabasePanelEnabled(true);
+                this.buttonCloseDb.Enabled = true;
+                this.buttonDeleteDb.Enabled = true;
             }
-
         }
 
         public void SetLastCardScanned(string studentNumber)
@@ -179,14 +176,11 @@ namespace StudentCardScanner
             {
                 this.databaseModel.SetCurrentFile(dlg.FileName);
                 this.databaseModel.PopulateDataGrid(this.dataGrid);
-                this.labelDbName.Text = this.databaseModel.getCurrentFileName();
+                this.labelDbName.Text = this.databaseModel.GetCurrentFileName();
                 this.SetDatabasePanelEnabled(true);
+                this.buttonCloseDb.Enabled = true;
+                this.buttonDeleteDb.Enabled = true;
             }
-        }
-
-        private void buttonSaveDb_Click(object sender, EventArgs e)
-        {
-            // TODO
         }
 
         // Returns true if the user has selected to read data from the scanner, false if otherwise.
@@ -233,6 +227,44 @@ namespace StudentCardScanner
             {
                 this.labelLocalIP.Text = ip;
             }));
+        }
+
+        private void buttonCloseDb_Click(object sender, EventArgs e)
+        {
+            CloseDatabasePanel();
+            if (!this.databaseModel.GetCurrentFileName().Equals(""))
+            {
+                this.databaseModel.SetCurrentFile("");
+            }
+        }
+
+        private void buttonDeleteDb_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you would like to delete '" + this.databaseModel.GetCurrentFileName() + "'?","Confirm delete action", 
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                try
+                {
+                    this.databaseModel.DeleteCurrentFile();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error deleting database: " + ex.ToString());
+                }
+                finally
+                {
+                    CloseDatabasePanel();
+                }
+            }
+        }
+
+        internal void CloseDatabasePanel()
+        {
+            this.buttonCloseDb.Enabled = false;
+            this.buttonDeleteDb.Enabled = false;
+            this.dataGrid.DataSource = null;
+            this.labelDbName.Text = "";
+            this.SetDatabasePanelEnabled(false);
         }
     }
 }

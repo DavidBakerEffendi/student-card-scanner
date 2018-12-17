@@ -1,9 +1,9 @@
-﻿using System;
+﻿using StudentCardScanner.Model;
+using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
-using System.IO.Ports;
-using StudentCardScanner.Model;
 using System.Threading;
 
 namespace StudentCardScanner.Controller
@@ -148,11 +148,9 @@ namespace StudentCardScanner.Controller
 
             if (!this.databaseModel.StudentNumberExists(studentNumber))
             {
-                Console.WriteLine("Student number does not exist, creating new entry...");
                 result = this.databaseModel.InsertData(studentNumber, this.form.GetSignMode());
             } else
             {
-                Console.WriteLine("Student number does exist, updating existing entry...");
                 result = this.databaseModel.UpdateData(studentNumber, this.form.GetSignMode());
             }
 

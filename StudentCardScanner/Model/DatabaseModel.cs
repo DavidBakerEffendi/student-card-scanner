@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Data;
 using System.Data.OleDb;
-using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 
@@ -41,9 +39,17 @@ namespace StudentCardScanner.Model
             this.connString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + fileName + "; Jet OLEDB:Engine Type=5";
         }
 
-        public String getCurrentFileName()
+        public String GetCurrentFileName()
         {
             return currentFile.Substring(currentFile.LastIndexOf("\\") + 1, currentFile.Length - 1 - currentFile.LastIndexOf("\\"));
+        }
+
+        public void DeleteCurrentFile()
+        {
+            if (File.Exists(this.currentFile))
+            {
+                File.Delete(this.currentFile);
+            }
         }
 
         // Creates a new access database and populates it with the templates table and columns.
@@ -240,8 +246,7 @@ namespace StudentCardScanner.Model
                     {
                         // Always call Read before accessing data.
                         reader.Read();
-                        Console.WriteLine("Checking if field '" + reader.GetFieldValue<Object>(0) + "' null: " + reader.GetFieldValue<Object>(0).Equals(null));
-                        if (!reader.GetFieldValue<Object>(0).Equals(null))
+                        if (reader.GetFieldValue<Object>(0) != DBNull.Value)
                         {
                             return false;
                         }

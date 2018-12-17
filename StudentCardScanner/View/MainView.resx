@@ -184,10 +184,10 @@
   </data>
   <data name="buttonCloseDb.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAACCSURBVDhPYxgc4P///xZAHEoitoBqBxuwGohJBauh2uEGIASwALAWoM1QNqp6DAEsACgPAqQZ
-        ABSrAmJVKBsECBsApO2AeDcUvwDij0AcDsQgQJQBoBhZBcWPgfg7EGcAMQiQ7IVaINaAskGAzoGIDIDy
-        IIDXAFIBigGUJeUBBAwMAPruswoNrcPOAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAIJJREFUOE9j
+        GBzg////FkAcSiK2gGoHG7AaiEkFq6Ha4QYgBLAAsBagzVA2qnoMASwAKA8CpBkAFKsCYlUoGwQIGwCk
+        7YB4NxS/AOKPQBwOxCBAlAGgGFkFxY+B+DsQZwAxCJDshVog1oCyQYDOgYgMgPIggNcAUgGKAZQl5QEE
+        DAwA+u6zCg2tw84AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="buttonOpenDb.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -197,7 +197,7 @@
         qBtAMQCaagfE2FIeNmwH1YYAQEGKw4DipAzLTNhSHjLGnpnIAwwMADvnH2dCzT5PAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="buttonNew.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonNewDb.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAJlJREFUOE9j
         oBr4//8/CxC3A/FuArgNiJmh2hAAKOgBxMQCd6g2BAAKhkLkiAKhUG0IABS0AOJVRGILqDYqAqCpFHth
@@ -266,22 +266,20 @@ To begin scanning, navigate to "Start Scanning" or to export an existing databas
   </data>
   <data name="pictureDriverUncheck.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAADcSURBVDhPtZJNDgFBEIWHNYkTWIqEcBPCVSyIpXsgEomVpVg4A+IM/k7B+N54CzLpiL+XfEn3
-        q+qa7pqK/qI4juswgKnRuuZwWCQVYA7SEVbmBFcYQ87pzyKgwzs4QAuyDimWhTao6AbSRTBnoC8VbaWk
-        GJxhbOsujDLoig1bQZGj212gZCsx+7CHjK2glAN6StdWYo5g4e1LkbuEobeJoe5+VeCTJ/RsJaaaqMY0
-        bQVFTrqJEsYEPvuNEmYetvBqkNYQnEYV0U00E++N8qNIqkLHB4TWFYd/qSi6AeOIUM49ygQ/AAAAAElF
-        TkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANxJREFUOE+1
+        kk0OAUEQhYc1iRNYioRwE8JVLIileyASiZWlWDgD4gz+TsH43ngLMumIv5d8Sfer6prumor+ojiO6zCA
+        qdG65nBYJBVgDtIRVuYEVxhDzunPIqDDOzhAC7IOKZaFNqjoBtJFMGegLxVtpaQYnGFs6y6MMuiKDVtB
+        kaPbXaBkKzH7sIeMraCUA3pK11ZijmDh7UuRu4Sht4mh7n5V4JMn9GwlppqoxjRtBUVOuokSxgQ++40S
+        Zh628GqQ1hCcRhXRTTQT743yo0iqQscHhNYVh3+pKLoB44hQzj3KBD8AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="pictureDriverCheck.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAADiSURBVDhPtZI9CsJAEEbTGws9gogEAl7BwsrKw0hALD2AtU2ihaDXsFcPI2Kn8c1mFpOw+Sn0
-        wYPszHxD/ry/kKbpGNd4wD1GGGi7GoZ83OEby0jtiH0dL0Kjizds4qSRIjTkVpu4YA8HGsugEOAL67Dh
-        Cd5xqHGzYIV5ysvy4YcUINK4WZBkNcMGZ/g0J3dY2GrcLJA3b7GBKZ71uhwWEo07H8Es0Z4rLCxNWODg
-        eomyZI6usMyONJ5Boc1ntMQa+0Kx7Y90RV9jRaSBdb9yjB0dr4ahEBcoy0S5DrX9SzzvA4jeXdcpc68S
-        AAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAOJJREFUOE+1
+        kj0KwkAQRtMbCz2CiAQCXsHCysrDSEAsPYC1TaKFoNewVw8jYqfxzWYWk7D5KfTBg+zMfEP+vL+QpukY
+        13jAPUYYaLsahnzc4RvLSO2IfR0vQqOLN2zipJEiNORWm7hgDwcay6AQ4AvrsOEJ3nGocbNghXnKy/Lh
+        hxQg0rhZkGQ1wwZn+DQnd1jYatwskDdvsYEpnvW6HBYSjTsfwSzRnissLE1Y4OB6ibJkjq6wzI40nkGh
+        zWe0xBr7QrHtj3RFX2NFpIF1v3KMHR2vhqEQFyjLRLkOtf1LPO8DiN5d1ylzrxIAAAAASUVORK5CYII=
 </value>
   </data>
 </root>
