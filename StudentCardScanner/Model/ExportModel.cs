@@ -97,9 +97,18 @@ namespace StudentCardScanner.Model
 
         public void ExportCurrentFileToExcel(string fileName)
         {
-            if (File.Exists(fileName))
+            if (File.Exists(@fileName))
             {
-                File.Delete(fileName);
+                try
+                {
+                    File.Delete(@fileName);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Unable to replace file \"" + @fileName + "\"! It may already " +
+                        "be in use by another applicaton.", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             try
@@ -125,7 +134,16 @@ namespace StudentCardScanner.Model
         {
             if (File.Exists(fileName))
             {
-                File.Delete(fileName);
+                try
+                {
+                    File.Delete(@fileName);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Unable to replace file \"" + @fileName + "\"! It may already " +
+                        "be in use by another applicaton.", "Export Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             // Instantiate string builder and headings
             StringBuilder sb = new StringBuilder();

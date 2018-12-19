@@ -220,11 +220,11 @@
 </value>
   </data>
   <data name="labelDescriptionBody.Text" xml:space="preserve">
-    <value>This software is an open-source project created by David Baker Effendi and distributed under the GNU General Public License. Any bugs can be reported via the project's GitHub page (see bottom left). 
+    <value>This software is an open-source project created by David Baker Effendi and distributed under the GNU General Public License. Any bugs can be reported via the project's GitHub page (see link bottom left). 
 
-This software is designed to read from a Mifare Secure Reader Model 718-10 scanner connected via a Sunix CommHub. The driver used is the Prolific PL2303.
+This software is designed to read from a Mifare Secure Reader Model 718-10 scanner connected via a Sunix CommHub. The driver used is the Prolific PL2303. Stage 2 of development involves implementing mobile app input capturing card data from a smartphone's native NFC scanner.
 
-To begin scanning, navigate to "Start Scanning" or to export an existing database to another format, navigate to the "Export" page. This project is currently in Alpha so you can expect a few bugs.
+To begin using the program's core functionality, navigate to the menu on the left-hand side. This project is currently in alpha so you can expect a few bugs.
 
 </value>
   </data>

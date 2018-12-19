@@ -62,7 +62,15 @@ namespace StudentCardScanner.Model
             }
             if (File.Exists(@currentFile))
             {
-                File.Delete(@currentFile);
+                try {
+                    File.Delete(@currentFile);
+                } catch (Exception)
+                {
+                    MessageBox.Show("Unable to replace file \"" + @currentFile + "\"! It may already " +
+                        "be in use by another applicaton.", "Database Create Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
 
             this.cat = new ADOX.Catalog();
