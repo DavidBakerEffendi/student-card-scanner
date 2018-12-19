@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelAside = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonDashboard = new System.Windows.Forms.Button();
@@ -97,20 +97,20 @@
             this.labelScannerStatus = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
             this.panelExport = new System.Windows.Forms.Panel();
-            this.panelFileSelect = new System.Windows.Forms.Panel();
-            this.labelSelectFile = new System.Windows.Forms.Label();
-            this.panelFormatSelect = new System.Windows.Forms.Panel();
-            this.labelSelectFormat = new System.Windows.Forms.Label();
-            this.panelFileName = new System.Windows.Forms.Panel();
-            this.labelExportDB = new System.Windows.Forms.Label();
             this.panelDatabaseExport = new System.Windows.Forms.Panel();
             this.labelDatabaseExport = new System.Windows.Forms.Label();
             this.dataGridExport = new System.Windows.Forms.DataGridView();
-            this.buttonSelectExportDB = new System.Windows.Forms.Button();
-            this.labelSelectedExport = new System.Windows.Forms.Label();
-            this.radioButtonExcel = new System.Windows.Forms.RadioButton();
-            this.radioButtonCSV = new System.Windows.Forms.RadioButton();
+            this.panelExportConfirm = new System.Windows.Forms.Panel();
             this.buttonExportDB = new System.Windows.Forms.Button();
+            this.labelExportDB = new System.Windows.Forms.Label();
+            this.panelFormatSelect = new System.Windows.Forms.Panel();
+            this.radioButtonCSV = new System.Windows.Forms.RadioButton();
+            this.radioButtonExcel = new System.Windows.Forms.RadioButton();
+            this.labelSelectFormat = new System.Windows.Forms.Label();
+            this.panelFileSelect = new System.Windows.Forms.Panel();
+            this.labelSelectedExport = new System.Windows.Forms.Label();
+            this.buttonSelectExportDB = new System.Windows.Forms.Button();
+            this.labelSelectFile = new System.Windows.Forms.Label();
             this.panelAside.SuspendLayout();
             this.panelIcon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
@@ -134,11 +134,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureDriverUncheck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDriverCheck)).BeginInit();
             this.panelExport.SuspendLayout();
-            this.panelFileSelect.SuspendLayout();
-            this.panelFormatSelect.SuspendLayout();
-            this.panelFileName.SuspendLayout();
             this.panelDatabaseExport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridExport)).BeginInit();
+            this.panelExportConfirm.SuspendLayout();
+            this.panelFormatSelect.SuspendLayout();
+            this.panelFileSelect.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelAside
@@ -515,32 +515,32 @@
             this.dataGrid.AllowUserToAddRows = false;
             this.dataGrid.AllowUserToDeleteRows = false;
             this.dataGrid.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
-            this.dataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
+            this.dataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGrid.Location = new System.Drawing.Point(20, 39);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
-            this.dataGrid.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
+            this.dataGrid.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGrid.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.dataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.dataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
@@ -882,7 +882,7 @@
             // panelExport
             // 
             this.panelExport.Controls.Add(this.panelDatabaseExport);
-            this.panelExport.Controls.Add(this.panelFileName);
+            this.panelExport.Controls.Add(this.panelExportConfirm);
             this.panelExport.Controls.Add(this.panelFormatSelect);
             this.panelExport.Controls.Add(this.panelFileSelect);
             this.panelExport.ForeColor = System.Drawing.Color.White;
@@ -890,70 +890,6 @@
             this.panelExport.Name = "panelExport";
             this.panelExport.Size = new System.Drawing.Size(806, 550);
             this.panelExport.TabIndex = 8;
-            // 
-            // panelFileSelect
-            // 
-            this.panelFileSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.panelFileSelect.Controls.Add(this.labelSelectedExport);
-            this.panelFileSelect.Controls.Add(this.buttonSelectExportDB);
-            this.panelFileSelect.Controls.Add(this.labelSelectFile);
-            this.panelFileSelect.Location = new System.Drawing.Point(14, 16);
-            this.panelFileSelect.Name = "panelFileSelect";
-            this.panelFileSelect.Size = new System.Drawing.Size(299, 100);
-            this.panelFileSelect.TabIndex = 2;
-            // 
-            // labelSelectFile
-            // 
-            this.labelSelectFile.AutoSize = true;
-            this.labelSelectFile.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSelectFile.Location = new System.Drawing.Point(13, 14);
-            this.labelSelectFile.Name = "labelSelectFile";
-            this.labelSelectFile.Size = new System.Drawing.Size(257, 19);
-            this.labelSelectFile.TabIndex = 2;
-            this.labelSelectFile.Text = "Step 1: Select Database to Export";
-            // 
-            // panelFormatSelect
-            // 
-            this.panelFormatSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.panelFormatSelect.Controls.Add(this.radioButtonCSV);
-            this.panelFormatSelect.Controls.Add(this.radioButtonExcel);
-            this.panelFormatSelect.Controls.Add(this.labelSelectFormat);
-            this.panelFormatSelect.Enabled = false;
-            this.panelFormatSelect.Location = new System.Drawing.Point(14, 127);
-            this.panelFormatSelect.Name = "panelFormatSelect";
-            this.panelFormatSelect.Size = new System.Drawing.Size(299, 124);
-            this.panelFormatSelect.TabIndex = 3;
-            // 
-            // labelSelectFormat
-            // 
-            this.labelSelectFormat.AutoSize = true;
-            this.labelSelectFormat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSelectFormat.Location = new System.Drawing.Point(13, 14);
-            this.labelSelectFormat.Name = "labelSelectFormat";
-            this.labelSelectFormat.Size = new System.Drawing.Size(230, 19);
-            this.labelSelectFormat.TabIndex = 2;
-            this.labelSelectFormat.Text = "Step 2: Choose Export Format";
-            // 
-            // panelFileName
-            // 
-            this.panelFileName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
-            this.panelFileName.Controls.Add(this.buttonExportDB);
-            this.panelFileName.Controls.Add(this.labelExportDB);
-            this.panelFileName.Enabled = false;
-            this.panelFileName.Location = new System.Drawing.Point(14, 262);
-            this.panelFileName.Name = "panelFileName";
-            this.panelFileName.Size = new System.Drawing.Size(299, 106);
-            this.panelFileName.TabIndex = 4;
-            // 
-            // labelExportDB
-            // 
-            this.labelExportDB.AutoSize = true;
-            this.labelExportDB.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelExportDB.Location = new System.Drawing.Point(13, 14);
-            this.labelExportDB.Name = "labelExportDB";
-            this.labelExportDB.Size = new System.Drawing.Size(189, 19);
-            this.labelExportDB.TabIndex = 2;
-            this.labelExportDB.Text = "Step 3: Export Database";
             // 
             // panelDatabaseExport
             // 
@@ -981,32 +917,32 @@
             this.dataGridExport.AllowUserToAddRows = false;
             this.dataGridExport.AllowUserToDeleteRows = false;
             this.dataGridExport.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
-            this.dataGridExport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
+            this.dataGridExport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridExport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridExport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridExport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridExport.Location = new System.Drawing.Point(20, 39);
             this.dataGridExport.Name = "dataGridExport";
             this.dataGridExport.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridExport.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
-            this.dataGridExport.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridExport.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(63)))), ((int)(((byte)(128)))));
+            this.dataGridExport.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridExport.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.dataGridExport.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.dataGridExport.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(80)))), ((int)(((byte)(180)))));
@@ -1015,6 +951,112 @@
             this.dataGridExport.RowTemplate.ReadOnly = true;
             this.dataGridExport.Size = new System.Drawing.Size(434, 461);
             this.dataGridExport.TabIndex = 0;
+            // 
+            // panelExportConfirm
+            // 
+            this.panelExportConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panelExportConfirm.Controls.Add(this.buttonExportDB);
+            this.panelExportConfirm.Controls.Add(this.labelExportDB);
+            this.panelExportConfirm.Enabled = false;
+            this.panelExportConfirm.Location = new System.Drawing.Point(14, 262);
+            this.panelExportConfirm.Name = "panelExportConfirm";
+            this.panelExportConfirm.Size = new System.Drawing.Size(299, 106);
+            this.panelExportConfirm.TabIndex = 4;
+            // 
+            // buttonExportDB
+            // 
+            this.buttonExportDB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.buttonExportDB.FlatAppearance.BorderSize = 0;
+            this.buttonExportDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportDB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonExportDB.Location = new System.Drawing.Point(104, 51);
+            this.buttonExportDB.Name = "buttonExportDB";
+            this.buttonExportDB.Size = new System.Drawing.Size(95, 33);
+            this.buttonExportDB.TabIndex = 6;
+            this.buttonExportDB.Text = "Export";
+            this.buttonExportDB.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonExportDB.UseVisualStyleBackColor = false;
+            this.buttonExportDB.Click += new System.EventHandler(this.buttonExportDB_Click);
+            // 
+            // labelExportDB
+            // 
+            this.labelExportDB.AutoSize = true;
+            this.labelExportDB.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelExportDB.Location = new System.Drawing.Point(13, 14);
+            this.labelExportDB.Name = "labelExportDB";
+            this.labelExportDB.Size = new System.Drawing.Size(189, 19);
+            this.labelExportDB.TabIndex = 2;
+            this.labelExportDB.Text = "Step 3: Export Database";
+            // 
+            // panelFormatSelect
+            // 
+            this.panelFormatSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panelFormatSelect.Controls.Add(this.radioButtonCSV);
+            this.panelFormatSelect.Controls.Add(this.radioButtonExcel);
+            this.panelFormatSelect.Controls.Add(this.labelSelectFormat);
+            this.panelFormatSelect.Enabled = false;
+            this.panelFormatSelect.Location = new System.Drawing.Point(14, 127);
+            this.panelFormatSelect.Name = "panelFormatSelect";
+            this.panelFormatSelect.Size = new System.Drawing.Size(299, 124);
+            this.panelFormatSelect.TabIndex = 3;
+            // 
+            // radioButtonCSV
+            // 
+            this.radioButtonCSV.AutoSize = true;
+            this.radioButtonCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButtonCSV.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.radioButtonCSV.Location = new System.Drawing.Point(18, 86);
+            this.radioButtonCSV.Name = "radioButtonCSV";
+            this.radioButtonCSV.Size = new System.Drawing.Size(256, 23);
+            this.radioButtonCSV.TabIndex = 4;
+            this.radioButtonCSV.Text = "Comma-Separated Values (*.csv)";
+            this.radioButtonCSV.UseVisualStyleBackColor = true;
+            this.radioButtonCSV.Click += new System.EventHandler(this.selectExportOption_CLick);
+            // 
+            // radioButtonExcel
+            // 
+            this.radioButtonExcel.AutoSize = true;
+            this.radioButtonExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButtonExcel.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.radioButtonExcel.Location = new System.Drawing.Point(18, 57);
+            this.radioButtonExcel.Name = "radioButtonExcel";
+            this.radioButtonExcel.Size = new System.Drawing.Size(131, 23);
+            this.radioButtonExcel.TabIndex = 3;
+            this.radioButtonExcel.Text = "Excel file (*.xlsx)";
+            this.radioButtonExcel.UseVisualStyleBackColor = true;
+            this.radioButtonExcel.Click += new System.EventHandler(this.selectExportOption_CLick);
+            // 
+            // labelSelectFormat
+            // 
+            this.labelSelectFormat.AutoSize = true;
+            this.labelSelectFormat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSelectFormat.Location = new System.Drawing.Point(13, 14);
+            this.labelSelectFormat.Name = "labelSelectFormat";
+            this.labelSelectFormat.Size = new System.Drawing.Size(230, 19);
+            this.labelSelectFormat.TabIndex = 2;
+            this.labelSelectFormat.Text = "Step 2: Choose Export Format";
+            // 
+            // panelFileSelect
+            // 
+            this.panelFileSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.panelFileSelect.Controls.Add(this.labelSelectedExport);
+            this.panelFileSelect.Controls.Add(this.buttonSelectExportDB);
+            this.panelFileSelect.Controls.Add(this.labelSelectFile);
+            this.panelFileSelect.Location = new System.Drawing.Point(14, 16);
+            this.panelFileSelect.Name = "panelFileSelect";
+            this.panelFileSelect.Size = new System.Drawing.Size(299, 100);
+            this.panelFileSelect.TabIndex = 2;
+            // 
+            // labelSelectedExport
+            // 
+            this.labelSelectedExport.AutoEllipsis = true;
+            this.labelSelectedExport.Location = new System.Drawing.Point(14, 59);
+            this.labelSelectedExport.MaximumSize = new System.Drawing.Size(158, 20);
+            this.labelSelectedExport.MinimumSize = new System.Drawing.Size(158, 20);
+            this.labelSelectedExport.Name = "labelSelectedExport";
+            this.labelSelectedExport.Size = new System.Drawing.Size(158, 20);
+            this.labelSelectedExport.TabIndex = 6;
+            this.labelSelectedExport.Text = "No file selected...";
             // 
             // buttonSelectExportDB
             // 
@@ -1029,56 +1071,17 @@
             this.buttonSelectExportDB.Text = "Select";
             this.buttonSelectExportDB.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonSelectExportDB.UseVisualStyleBackColor = false;
+            this.buttonSelectExportDB.Click += new System.EventHandler(this.buttonSelectExportDB_Click);
             // 
-            // labelSelectedExport
+            // labelSelectFile
             // 
-            this.labelSelectedExport.AutoEllipsis = true;
-            this.labelSelectedExport.Location = new System.Drawing.Point(14, 59);
-            this.labelSelectedExport.MaximumSize = new System.Drawing.Size(158, 20);
-            this.labelSelectedExport.MinimumSize = new System.Drawing.Size(158, 20);
-            this.labelSelectedExport.Name = "labelSelectedExport";
-            this.labelSelectedExport.Size = new System.Drawing.Size(158, 20);
-            this.labelSelectedExport.TabIndex = 6;
-            this.labelSelectedExport.Text = "No file selected...";
-            // 
-            // radioButtonExcel
-            // 
-            this.radioButtonExcel.AutoSize = true;
-            this.radioButtonExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButtonExcel.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.radioButtonExcel.Location = new System.Drawing.Point(18, 57);
-            this.radioButtonExcel.Name = "radioButtonExcel";
-            this.radioButtonExcel.Size = new System.Drawing.Size(131, 23);
-            this.radioButtonExcel.TabIndex = 3;
-            this.radioButtonExcel.Text = "Excel file (*.xslx)";
-            this.radioButtonExcel.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonCSV
-            // 
-            this.radioButtonCSV.AutoSize = true;
-            this.radioButtonCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButtonCSV.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.radioButtonCSV.Location = new System.Drawing.Point(18, 86);
-            this.radioButtonCSV.Name = "radioButtonCSV";
-            this.radioButtonCSV.Size = new System.Drawing.Size(256, 23);
-            this.radioButtonCSV.TabIndex = 4;
-            this.radioButtonCSV.Text = "Comma-Separated Values (*.csv)";
-            this.radioButtonCSV.UseVisualStyleBackColor = true;
-            // 
-            // buttonExportDB
-            // 
-            this.buttonExportDB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.buttonExportDB.Enabled = false;
-            this.buttonExportDB.FlatAppearance.BorderSize = 0;
-            this.buttonExportDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExportDB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonExportDB.Location = new System.Drawing.Point(104, 51);
-            this.buttonExportDB.Name = "buttonExportDB";
-            this.buttonExportDB.Size = new System.Drawing.Size(95, 33);
-            this.buttonExportDB.TabIndex = 6;
-            this.buttonExportDB.Text = "Export";
-            this.buttonExportDB.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonExportDB.UseVisualStyleBackColor = false;
+            this.labelSelectFile.AutoSize = true;
+            this.labelSelectFile.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSelectFile.Location = new System.Drawing.Point(13, 14);
+            this.labelSelectFile.Name = "labelSelectFile";
+            this.labelSelectFile.Size = new System.Drawing.Size(257, 19);
+            this.labelSelectFile.TabIndex = 2;
+            this.labelSelectFile.Text = "Step 1: Select Database to Export";
             // 
             // MainForm
             // 
@@ -1130,15 +1133,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureDriverUncheck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDriverCheck)).EndInit();
             this.panelExport.ResumeLayout(false);
-            this.panelFileSelect.ResumeLayout(false);
-            this.panelFileSelect.PerformLayout();
-            this.panelFormatSelect.ResumeLayout(false);
-            this.panelFormatSelect.PerformLayout();
-            this.panelFileName.ResumeLayout(false);
-            this.panelFileName.PerformLayout();
             this.panelDatabaseExport.ResumeLayout(false);
             this.panelDatabaseExport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridExport)).EndInit();
+            this.panelExportConfirm.ResumeLayout(false);
+            this.panelExportConfirm.PerformLayout();
+            this.panelFormatSelect.ResumeLayout(false);
+            this.panelFormatSelect.PerformLayout();
+            this.panelFileSelect.ResumeLayout(false);
+            this.panelFileSelect.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1210,7 +1213,7 @@
         private System.Windows.Forms.Panel panelDatabaseExport;
         private System.Windows.Forms.Label labelDatabaseExport;
         private System.Windows.Forms.DataGridView dataGridExport;
-        private System.Windows.Forms.Panel panelFileName;
+        private System.Windows.Forms.Panel panelExportConfirm;
         private System.Windows.Forms.Label labelExportDB;
         private System.Windows.Forms.Panel panelFormatSelect;
         private System.Windows.Forms.Label labelSelectFormat;

@@ -15,11 +15,11 @@ namespace StudentCardScanner.Model
 
         public const int SIGN_IN = 0x0;
         public const int SIGN_OUT = 0x1;
-        private const string DATE_TIME_FORMAT = "yyyy/MM/dd hh:mm:ss tt";
-        private const string TABLE_NAME = "tbl_student_scans";
-        private const string STUDENT_NO_COL = "student_number";
-        private const string SIGN_IN_COL = "sign_in_time";
-        private const string SIGN_OUT_COL = "sign_out_time";
+        public const string DATE_TIME_FORMAT = "yyyy/MM/dd hh:mm:ss tt";
+        public const string TABLE_NAME = "tbl_student_scans";
+        public const string STUDENT_NO_COL = "student_number";
+        public const string SIGN_IN_COL = "sign_in_time";
+        public const string SIGN_OUT_COL = "sign_out_time";
 
         private String currentFile = "";
         private String connString = "";
@@ -319,7 +319,7 @@ namespace StudentCardScanner.Model
             con.Close();
         }
 
-        internal void PopulateDataGrid(DataGridView dataGrid)
+        internal void ReadFromDatabase(DataGridView dataGrid)
         {
             this.dataGrid = dataGrid;
             this.ReadFromDatabase();

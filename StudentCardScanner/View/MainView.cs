@@ -18,18 +18,23 @@ namespace StudentCardScanner
         public static extern bool ReleaseCapture();
 
         private DatabaseModel databaseModel;
+        private ExportModel exportModel;
         private SerialPortController serialPortController;
         private NetworkController networkController;
 
         public MainForm()
         {
-            InitializeComponent();
-            this.databaseModel = new DatabaseModel();
-            this.serialPortController = new SerialPortController(this, databaseModel);
-            this.networkController = new NetworkController(this, databaseModel);
+            /* Initialize UI */
+            InitializeComponent(); // VS Studio Autogen code
             this.panelDashboard.Visible = true;
             this.panelScanMain.Visible = false;
             this.panelExport.Visible = false;
+            /* Initialize models and controllers */
+            this.databaseModel = new DatabaseModel();
+            this.exportModel = new ExportModel();
+            this.serialPortController = new SerialPortController(this, databaseModel);
+            this.networkController = new NetworkController(this, databaseModel);
+           
         }
 
 
@@ -135,7 +140,7 @@ namespace StudentCardScanner
             {
                 this.databaseModel.SetCurrentFile(dlg.FileName);
                 this.databaseModel.CreateNewAccessDatabase();
-                this.databaseModel.PopulateDataGrid(this.dataGrid);
+                this.databaseModel.ReadFromDatabase(this.dataGrid);
                 this.labelDbName.Text = this.databaseModel.GetCurrentFileName();
                 this.SetDatabasePanelEnabled(true);
                 this.buttonCloseDb.Enabled = true;
@@ -167,7 +172,7 @@ namespace StudentCardScanner
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.DefaultExt = "accdb";
             dlg.ValidateNames = true;
-            dlg.Filter = "Access Database (.accdb)|";
+            dlg.Filter = "Access Database (*.accdb)|*.accdb";
             dlg.Title = "Open existing database";
             dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             dlg.RestoreDirectory = true;
@@ -175,7 +180,7 @@ namespace StudentCardScanner
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 this.databaseModel.SetCurrentFile(dlg.FileName);
-                this.databaseModel.PopulateDataGrid(this.dataGrid);
+                this.databaseModel.ReadFromDatabase(this.dataGrid);
                 this.labelDbName.Text = this.databaseModel.GetCurrentFileName();
                 this.SetDatabasePanelEnabled(true);
                 this.buttonCloseDb.Enabled = true;
@@ -265,6 +270,59 @@ namespace StudentCardScanner
             this.dataGrid.DataSource = null;
             this.labelDbName.Text = "";
             this.SetDatabasePanelEnabled(false);
+        }
+
+        private void buttonSelectExportDB_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.DefaultExt = "accdb";
+            dlg.ValidateNames = true;
+            dlg.Filter = "Access Database (.accdb)|";
+            dlg.Title = "Open existing database";
+            dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            dlg.RestoreDirectory = true;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                this.exportModel.SetCurrentFile(dlg.FileName);
+                this.exportModel.ReadFromDatabase(this.dataGridExport);
+                this.panelDatabaseExport.Enabled = true;
+                this.panelFormatSelect.Enabled = true;
+                this.labelSelectedExport.Text = this.exportModel.GetCurrentFileName();
+            }
+        }
+
+        private void selectExportOption_CLick(object sender, EventArgs e)
+        {
+            if (this.radioButtonExcel.Checked) { this.exportModel.setExportFileType(".xlsx"); }
+            else if (this.radioButtonCSV.Checked) { this.exportModel.setExportFileType(".csv"); }
+            this.panelExportConfirm.Enabled = true;
+        }
+
+        private void buttonExportDB_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = "NewDatabase" + this.exportModel.getExportFileType();
+            dlg.DefaultExt = this.exportModel.getExportFileType();
+            dlg.ValidateNames = true;
+            dlg.Filter = this.exportModel.getExportFilter();
+            dlg.Title = "Choose location to export " + this.exportModel.GetCurrentFileName() + " to:";
+            dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            dlg.RestoreDirectory = true;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                switch (this.exportModel.getExportFileType())
+                {
+                    case ".xlsx":
+                        this.exportModel.ExportCurrentFileToExcel(dlg.FileName);
+                        break;
+                    case ".csv":
+                        this.exportModel.ExportCurrentFileToCSV(dlg.FileName);
+                        break;
+                }
+                
+            }
         }
     }
 }

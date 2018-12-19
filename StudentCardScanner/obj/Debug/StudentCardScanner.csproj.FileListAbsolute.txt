@@ -12,3 +12,4 @@ C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\Inte
 C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\Interop.MDACVer.dll
 C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\StudentCardScanner.csproj.ResolveComReference.cache
 C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\StudentCardScanner.csprojAssemblyReference.cache
+C:\Users\David\source\repos\StudentCardScanner\StudentCardScanner\obj\Debug\Interop.ACTIVEXLib.dll
