@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace StudentCardScanner
 {
+    /// <summary>
+    /// The event handlers for the main form.
+    /// </summary>
     public partial class MainForm : Form
     {
 
@@ -22,6 +25,9 @@ namespace StudentCardScanner
         private SerialPortController serialPortController;
         private NetworkController networkController;
 
+        /// <summary>
+        /// The driver class for the main form and its event handelers.
+        /// </summary>
         public MainForm()
         {
             /* Initialize UI */
@@ -34,10 +40,13 @@ namespace StudentCardScanner
             this.exportModel = new ExportModel();
             this.serialPortController = new SerialPortController(this, databaseModel);
             this.networkController = new NetworkController(this, databaseModel);
-           
         }
 
-
+        /// <summary>
+        /// Handles the nagivation to the dashboard page.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
             panelLeft.Height = buttonDashboard.Height;
@@ -50,6 +59,11 @@ namespace StudentCardScanner
             labelHeading.Text = buttonDashboard.Text;
         }
 
+        /// <summary>
+        /// Handles the nagivation to the scanner page.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonScan_Click(object sender, EventArgs e)
         {
             panelLeft.Height = buttonScan.Height;
@@ -62,6 +76,11 @@ namespace StudentCardScanner
             labelHeading.Text = buttonScan.Text;
         }
 
+        /// <summary>
+        /// Handles the nagivation to the export page.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonExport_Click(object sender, EventArgs e)
         {
             panelLeft.Height = buttonExport.Height;
@@ -74,6 +93,10 @@ namespace StudentCardScanner
             labelHeading.Text = buttonExport.Text;
         }
 
+        /// <summary>
+        /// Opens the user's web browser to the given URL.
+        /// </summary>
+        /// <param name="url">The URL to open.</param>
         private void LinkTo(String url)
         {
             try
@@ -87,11 +110,30 @@ namespace StudentCardScanner
             }
         }
 
+        /// <summary>
+        /// Opens the user's web browser to the project author's GitHub.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void linkGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LinkTo("https://github.com/DavidBakerEffendi");
         }
 
+        /// <summary>
+        /// Opens the user's web browser to the project's GitHub.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
+        private void pictureLogo_Click(object sender, EventArgs e)
+        {
+            LinkTo("https://github.com/DavidBakerEffendi/student-card-scanner");
+        }
+
+        /// <summary>
+        /// Obtains and returns the sign mode. (sign in or sign out)
+        /// </summary>
+        /// <returns>The sign in or sign out flag as an integer.</returns>
         public int GetSignMode()
         {
             if (this.radioSignIn.Checked)
@@ -103,14 +145,39 @@ namespace StudentCardScanner
             }
         }
 
+        /// <summary>
+        /// Changes the colour of the exit button on mouse enter to red.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonExit_MouseEnter(object sender, EventArgs e) => buttonExit.BackColor = Color.FromArgb(1, 244, 81, 30);
 
+        /// <summary>
+        /// Changes the colour of the exit button back to the original colour of the form.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonExit_MouseLeave(object sender, EventArgs e) => buttonExit.BackColor = Color.FromArgb(255, 33, 33, 33);
 
+        /// <summary>
+        /// Exits the application once the user clicks on the exit button.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonExit_Click(object sender, EventArgs e) => Application.Exit();
 
+        /// <summary>
+        /// Minimizes the application when the user clicks on the minimize button.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonMinimize_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
 
+        /// <summary>
+        /// Allows the application to be moved around the screen when dragged on the toolbar panel.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void panelToolbar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -120,11 +187,11 @@ namespace StudentCardScanner
             }
         }
 
-        private void pictureLogo_Click(object sender, EventArgs e)
-        {
-            LinkTo("https://github.com/DavidBakerEffendi/student-card-scanner");
-        }
-
+        /// <summary>
+        /// Creates a new Access database and overwrites a currently existing one if there already exists a database with the same name.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonNew_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
@@ -148,6 +215,10 @@ namespace StudentCardScanner
             }
         }
 
+        /// <summary>
+        /// Displays the last scanned student number on the GUI with the timestamp.
+        /// </summary>
+        /// <param name="studentNumber">The student number to display.</param>
         public void SetLastCardScanned(string studentNumber)
         {
             if (this.Controls[0].InvokeRequired)
@@ -162,11 +233,20 @@ namespace StudentCardScanner
             }
         }
 
+        /// <summary>
+        /// Sets the enabled state of the database panel on the scanner page.
+        /// </summary>
+        /// <param name="enable">The enabled flag to set to.</param>
         public void SetDatabasePanelEnabled(bool enable)
         {
             this.panelDatabase.Enabled = enable;
         }
 
+        /// <summary>
+        /// Allows the selection of an existing Access database to append records to.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonOpenDb_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -188,17 +268,27 @@ namespace StudentCardScanner
             }
         }
 
-        // Returns true if the user has selected to read data from the scanner, false if otherwise.
+        /// <summary>
+        /// Returns true if the user has selected to read data from the scanner, false if otherwise.
+        /// </summary>
         public Boolean GetToggleScanner()
         {
             return this.checkToggleScanner.Checked;
         }
 
+        /// <summary>
+        /// Sets the enabled state of the scanner toggle button.
+        /// </summary>
+        /// <param name="flag">The enabled flag to set to.</param>
         public void SetScannerReady(bool flag)
         {
             this.checkToggleScanner.Enabled = flag;
         }
 
+        /// <summary>
+        /// Sets the scanner driver status on the dashboard page.
+        /// </summary>
+        /// <param name="flag">The status flag to set.</param>
         public void SetScannerDriverStatus(bool flag)
         {
             this.BeginInvoke(new MethodInvoker(() =>
@@ -208,6 +298,10 @@ namespace StudentCardScanner
             }));
         }
 
+        /// <summary>
+        /// Sets the scanner device status on the dashboard page.
+        /// </summary>
+        /// <param name="flag">The status flag to set.</param>
         public void SetScannerDeviceStatus(bool flag)
         {
             this.BeginInvoke(new MethodInvoker(() =>
@@ -217,6 +311,10 @@ namespace StudentCardScanner
             }));
         }
 
+        /// <summary>
+        /// Sets the network status on the dashboard page.
+        /// </summary>
+        /// <param name="flag">The status flag to set.</param>
         public void SetNetworkConnectedStatus(bool flag)
         {
             this.BeginInvoke(new MethodInvoker(() =>
@@ -226,6 +324,10 @@ namespace StudentCardScanner
             }));
         }
 
+        /// <summary>
+        /// Sets the local IP on the dashboard page.
+        /// </summary>
+        /// <param name="flag">The status flag to set.</param>
         public void SetNetworkLocalIP(string ip)
         {
             this.BeginInvoke(new MethodInvoker(() =>
@@ -234,6 +336,11 @@ namespace StudentCardScanner
             }));
         }
 
+        /// <summary>
+        /// Closes the currently selected database.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonCloseDb_Click(object sender, EventArgs e)
         {
             CloseDatabasePanel();
@@ -243,6 +350,11 @@ namespace StudentCardScanner
             }
         }
 
+        /// <summary>
+        /// Deletes the currently selected database.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonDeleteDb_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you would like to delete '" + this.databaseModel.GetCurrentFileName() + "'?","Confirm delete action", 
@@ -263,6 +375,9 @@ namespace StudentCardScanner
             }
         }
 
+        /// <summary>
+        /// "Closes" the database panel components on the form.
+        /// </summary>
         internal void CloseDatabasePanel()
         {
             this.buttonCloseDb.Enabled = false;
@@ -272,6 +387,11 @@ namespace StudentCardScanner
             this.SetDatabasePanelEnabled(false);
         }
 
+        /// <summary>
+        /// Selects an Access database to be exported.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonSelectExportDB_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -292,6 +412,11 @@ namespace StudentCardScanner
             }
         }
 
+        /// <summary>
+        /// Sets the export file type on the export model when the user changes the export option.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void selectExportOption_CLick(object sender, EventArgs e)
         {
             if (this.radioButtonExcel.Checked) { this.exportModel.setExportFileType(".xlsx"); }
@@ -299,6 +424,11 @@ namespace StudentCardScanner
             this.panelExportConfirm.Enabled = true;
         }
 
+        /// <summary>
+        /// Exports the records in the selected Access database to export to the selected destination file.
+        /// </summary>
+        /// <param name="sender">Sender of the request.</param>
+        /// <param name="e">Event arguments.</param>
         private void buttonExportDB_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();

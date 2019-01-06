@@ -9,7 +9,10 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace StudentCardScanner.Model
-{
+{   
+    /// <summary>
+    /// This class handles the processing of converting a selected database to a chosen file type.
+    /// </summary>
     class ExportModel
     {
         private string currentFile = "";
@@ -17,11 +20,6 @@ namespace StudentCardScanner.Model
         private DataGridView dataGrid;
         private string exportFileType = "";
         private string exportFilter = "";
-        private string fileToExportTo = "";
-
-        private ADOX.Catalog cat;
-        private ADOX.Table table;
-        private ADODB.Connection conn;
 
         /// <summary>
         /// Sets the current file name with the given file name.
@@ -33,12 +31,20 @@ namespace StudentCardScanner.Model
             this.connString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + fileName + "; Jet OLEDB:Engine Type=5";
         }
 
+        /// <summary>
+        /// Returns only the name of the currently selected file to export.
+        /// </summary>
+        /// <returns>
+        /// The file's name with extension
+        /// </returns>
         public String GetCurrentFileName()
         {
             return currentFile.Substring(currentFile.LastIndexOf("\\") + 1, currentFile.Length - 1 - currentFile.LastIndexOf("\\"));
         }
 
-        // Populates the given data grid with what is currently in the database connected to the program 
+        /// <summary>
+        /// Populates the given data grid with what is currently in the database connected to the program.
+        /// </summary>
         internal void ReadFromDatabase()
         {
             OleDbConnection con = new OleDbConnection(this.connString);
@@ -63,12 +69,20 @@ namespace StudentCardScanner.Model
             con.Close();
         }
 
+        /// <summary>
+        /// Sets the current DataGridView and then populates it with what is currently in the database.
+        /// </summary>
+        /// <param name="dataGrid">The DataGridView to populate.</param>
         internal void ReadFromDatabase(DataGridView dataGrid)
         {
             this.dataGrid = dataGrid;
             this.ReadFromDatabase();
         }
 
+        /// <summary>
+        /// Sets the file type to export the records in the selected Access database to.
+        /// </summary>
+        /// <param name="fileType">The file extension representing what type of file to export as.</param>
         public void setExportFileType(string fileType)
         {
             switch (fileType) {
@@ -85,16 +99,28 @@ namespace StudentCardScanner.Model
             this.exportFileType = fileType;
         }
 
+        /// <summary>
+        /// Getter for file type.
+        /// </summary>
+        /// <returns>The set export file type.</returns>
         public string getExportFileType()
         {
             return this.exportFileType;
         }
 
+        /// <summary>
+        /// Getter for the export filter.
+        /// </summary>
+        /// <returns>The string representing the export filter for the file selector.</returns>
         public string getExportFilter()
         {
             return this.exportFilter;
         }
 
+        /// <summary>
+        /// Exports the selected file to an Excel file.
+        /// </summary>
+        /// <param name="fileName">The absolute path of the Excel file to export to.</param>
         public void ExportCurrentFileToExcel(string fileName)
         {
             if (File.Exists(@fileName))
@@ -130,6 +156,10 @@ namespace StudentCardScanner.Model
             }
         }
 
+        /// <summary>
+        /// Exports the selected file to a CSV file.
+        /// </summary>
+        /// <param name="fileName">The absolute path of the Excel file to export to.</param>
         public void ExportCurrentFileToCSV(string fileName)
         {
             if (File.Exists(fileName))

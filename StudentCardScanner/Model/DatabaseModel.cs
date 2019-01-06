@@ -39,11 +39,18 @@ namespace StudentCardScanner.Model
             this.connString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + fileName + "; Jet OLEDB:Engine Type=5";
         }
 
+        /// <summary>
+        /// Getter for the currently selected Access database's file name.
+        /// </summary>
+        /// <returns>The file name and extension without path.</returns>
         public String GetCurrentFileName()
         {
             return currentFile.Substring(currentFile.LastIndexOf("\\") + 1, currentFile.Length - 1 - currentFile.LastIndexOf("\\"));
         }
 
+        /// <summary>
+        /// Deletes the currently selected Access database.
+        /// </summary>
         public void DeleteCurrentFile()
         {
             if (File.Exists(this.currentFile))
@@ -52,7 +59,10 @@ namespace StudentCardScanner.Model
             }
         }
 
-        // Creates a new access database and populates it with the templates table and columns.
+        /// <summary>
+        /// Creates a new access database and populates it with the templates table and columns.
+        /// </summary>
+        /// <returns>True if database created and selected successfully, false if otherwise.</returns>
         public bool CreateNewAccessDatabase()
         {
             bool result = false;
@@ -89,7 +99,11 @@ namespace StudentCardScanner.Model
                 this.cat.Create(this.connString);
                 this.cat.Tables.Append(table);
                 this.conn = cat.ActiveConnection as ADODB.Connection;
-                this.CloseCurrentConnection();
+                if (this.conn != null)
+                {
+                    if (this.conn.State == 1)
+                        this.conn.Close();
+                }
 
                 result = true;
             }
@@ -102,6 +116,12 @@ namespace StudentCardScanner.Model
             return result;
         }
 
+        /// <summary>
+        /// Inserts the given student number into the database and sets a sign in or out timestamp depending on the mode.
+        /// </summary>
+        /// <param name="studentNumber">The student number to log.</param>
+        /// <param name="mode">The logging mode, i.e., DatabaseModel.SIGN_IN or DatabaseModel.SIGN_OUT</param>
+        /// <returns>True if successfully inserted, false if otherwise.</returns>
         internal bool InsertData(string studentNumber, int mode)
         {
             String logTime = DateTime.Now.ToString(DATE_TIME_FORMAT);
@@ -137,6 +157,12 @@ namespace StudentCardScanner.Model
             }
         }
 
+        /// <summary>
+        /// Updates the given student number into the database and sets a sign in or out timestamp depending on the mode.
+        /// </summary>
+        /// <param name="studentNumber">The student number to log.</param>
+        /// <param name="mode">The logging mode, i.e., DatabaseModel.SIGN_IN or DatabaseModel.SIGN_OUT</param>
+        /// <returns>True if successfully updated, false if otherwise.</returns>
         internal bool UpdateData(string studentNumber, int mode)
         {
             String logTime = DateTime.Now.ToString(DATE_TIME_FORMAT);
@@ -183,7 +209,11 @@ namespace StudentCardScanner.Model
             }
         }
 
-        // Checks if the given student number exists in the current database.
+        /// <summary>
+        /// Checks if the given student number exists in the currently selected database.
+        /// </summary>
+        /// <param name="studentNumber">The student number to query.</param>
+        /// <returns>True if the student number exists, false if otherwise.</returns>
         public bool StudentNumberExists(string studentNumber)
         {
             String query = "SELECT " + STUDENT_NO_COL + " FROM " + TABLE_NAME + " WHERE " + STUDENT_NO_COL + "='" + studentNumber + "';";
@@ -235,6 +265,15 @@ namespace StudentCardScanner.Model
             }
         }
 
+        /// <summary>
+        /// Checks if a given field (column) in the database is null at the record with the given username.
+        /// </summary>
+        /// <param name="studentNumber">The student number to query.</param>
+        /// <param name="field">The field/column in the database to check if currently null or not.</param>
+        /// <returns>
+        /// True if the record returns null for the given student number or if the field at the record
+        /// with the given student number is null. Returns false if otherwise.
+        /// </returns>
         private bool IsFieldNullAtSUNumber(string studentNumber, string field)
         {
             String query = "SELECT " + field + " FROM " + TABLE_NAME + " WHERE " + STUDENT_NO_COL + "='" + studentNumber + "';";
@@ -283,26 +322,9 @@ namespace StudentCardScanner.Model
             }
         }
 
-        // Opens a new ADODB connection using the current file name
-        public void OpenNewConnection()
-        {
-            if (this.conn == null)
-                this.conn = new ADODB.Connection();
-            if (this.conn.State == 0)
-                this.conn.Open(this.connString);
-        }
-
-        // Closes the current ADODB connection
-        public void CloseCurrentConnection()
-        {
-            if (this.conn != null)
-            {
-                if (this.conn.State == 1)
-                    this.conn.Close();
-            }
-        }
-
-        // Populates the given data grid with what is currently in the database connected to the program 
+        /// <summary>
+        /// Populates the given data grid with what is currently in the database connected to the program.
+        /// </summary>
         internal void ReadFromDatabase()
         {
             OleDbConnection con = new OleDbConnection(this.connString);

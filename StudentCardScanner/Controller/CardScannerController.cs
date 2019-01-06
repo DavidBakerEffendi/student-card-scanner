@@ -8,6 +8,9 @@ using System.Threading;
 
 namespace StudentCardScanner.Controller
 {
+    /// <summary>
+    /// Controls the incoming data from the Mifare Secure card reader.
+    /// </summary>
     class SerialPortController
     {
         private readonly DatabaseModel databaseModel;
@@ -18,6 +21,11 @@ namespace StudentCardScanner.Controller
         private Queue<byte> receivedData = new Queue<byte>();
         private readonly int INCOMING_SIZE = 26;
 
+        /// <summary>
+        /// Creates a SerialPortController class and initialises a local copy of references to the form and database model.
+        /// </summary>
+        /// <param name="form">The UI form.</param>
+        /// <param name="databaseModel">The database model.</param>
         public SerialPortController(MainForm form, DatabaseModel databaseModel)
         {
             this.form = form;
@@ -27,6 +35,9 @@ namespace StudentCardScanner.Controller
             new Thread(checkScanner).Start();
         }
 
+        /// <summary>
+        /// Checks the status of the necessary driver and whether the card scanner is connected or not.
+        /// </summary>
         private void RunStatusCheck()
         {
             while (!this.form.Created)
@@ -39,7 +50,7 @@ namespace StudentCardScanner.Controller
             {
                 if (!ConnectToDevice())
                 {
-                    // TODO: add port listener perhaps?
+                    // TODO: add port listener for a reconnect perhaps?
                 }
             }
             else
@@ -49,7 +60,10 @@ namespace StudentCardScanner.Controller
             }
         }
 
-        // Checks if the current scanner is ready to scan or not
+        /// <summary>
+        ///  Checks if the current scanner is ready to scan or not.
+        /// </summary>
+        /// <returns>True if the scanner is ready, false if otherwise.</returns>
         public bool ScannerReady()
         {
             
@@ -100,6 +114,10 @@ namespace StudentCardScanner.Controller
             return true;
         }
 
+        /// <summary>
+        /// Attempts to connect to the Mifare Secure card reader via the SerialPort API.
+        /// </summary>
+        /// <returns>True if connection successful, false if otherwise.</returns>
         public bool ConnectToDevice()
         {
             port = new SerialPort(commPort, 19200, Parity.None, 8, StopBits.One);
@@ -118,6 +136,11 @@ namespace StudentCardScanner.Controller
             }
         }
 
+        /// <summary>
+        /// An event listener for incoming serial data from the card scanner.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">The SerialDataReceived event arguments object.</param>
         private void port_DataReceived(object sender,
           SerialDataReceivedEventArgs e)
         {
@@ -128,7 +151,10 @@ namespace StudentCardScanner.Controller
             processData();
         }
 
-        void processData()
+        /// <summary>
+        /// Processes data and logs the student number when all 26 bytes of the incoming packet are captured.
+        /// </summary>
+        internal void processData()
         {
             // Determine if we have a "packet" in the queue
             if (receivedData.Count >= INCOMING_SIZE)
@@ -139,6 +165,10 @@ namespace StudentCardScanner.Controller
             }
         }
 
+        /// <summary>
+        /// Logs the student number to the database.
+        /// </summary>
+        /// <param name="studentNumber">The student number to log.</param>
         internal void LogStudentNumber(string studentNumber)
         {
             // If data from scanner is not consented, then return.
