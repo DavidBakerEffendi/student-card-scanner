@@ -1,5 +1,6 @@
 # Output files
 StudentCardScanner/obj
+StudentCardScanner/bin
 
 # Prerequisites
 *.d
