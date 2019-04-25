@@ -184,9 +184,10 @@ namespace StudentCardScanner.Controller
                 result = this.databaseModel.UpdateData(studentNumber, this.form.GetSignMode());
             }
 
+            this.form.SetLastCardScanned(studentNumber);
+
             if (result)
             {
-                this.form.SetLastCardScanned(studentNumber);
                 this.databaseModel.ReadFromDatabase();
             }
         }

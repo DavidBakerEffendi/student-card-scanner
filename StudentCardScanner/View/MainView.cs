@@ -3,6 +3,7 @@ using StudentCardScanner.Model;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace StudentCardScanner
 {
@@ -36,7 +37,7 @@ namespace StudentCardScanner
             this.panelScanMain.Visible = false;
             this.panelExport.Visible = false;
             /* Initialize models and controllers */
-            this.databaseModel = new DatabaseModel();
+            this.databaseModel = new DatabaseModel(this);
             this.exportModel = new ExportModel();
             this.serialPortController = new SerialPortController(this, databaseModel);
             this.networkController = new NetworkController(this, databaseModel);
@@ -445,13 +446,38 @@ namespace StudentCardScanner
                 switch (this.exportModel.getExportFileType())
                 {
                     case ".xlsx":
+                        Cursor.Current = Cursors.WaitCursor;
                         this.exportModel.ExportCurrentFileToExcel(dlg.FileName);
                         break;
                     case ".csv":
+                        Cursor.Current = Cursors.WaitCursor;
                         this.exportModel.ExportCurrentFileToCSV(dlg.FileName);
                         break;
                 }
-                
+                Cursor.Current = Cursors.Default;
+
+            }
+        }
+
+        /// <summary>
+        /// Flashes the student number display panel from primary blue to secondary red back to primary blue.
+        /// </summary>
+        public void flashSignInPanel()
+        {
+            if (this.Controls[0].InvokeRequired)
+            {
+                this.Controls[0].BeginInvoke((Action)(() =>
+                {
+                    panelLastSignIn.BackColor = Color.FromArgb(255, 63, 128);
+                }));
+            }
+            Thread.Sleep(100);
+            if (this.Controls[0].InvokeRequired)
+            {
+                this.Controls[0].BeginInvoke((Action)(() =>
+                {
+                    panelLastSignIn.BackColor = Color.FromArgb(62, 80, 180);
+                }));
             }
         }
     }

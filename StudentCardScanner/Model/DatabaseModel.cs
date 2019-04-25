@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
+using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudentCardScanner.Model
@@ -24,10 +26,16 @@ namespace StudentCardScanner.Model
         private String currentFile = "";
         private String connString = "";
         private DataGridView dataGrid;
+        private readonly MainForm form;
 
         private ADOX.Catalog cat;
         private ADOX.Table table;
         private ADODB.Connection conn;
+
+        public DatabaseModel(MainForm mainView)
+        {
+            this.form = mainView;
+        }
 
         /// <summary>
         /// Sets the current file name with the given file name.
@@ -167,12 +175,13 @@ namespace StudentCardScanner.Model
         {
             String logTime = DateTime.Now.ToString(DATE_TIME_FORMAT);
             String query = "UPDATE " + TABLE_NAME + " SET ";
+
             switch (mode)
             {
                 case SIGN_IN:
                     if (!IsFieldNullAtSUNumber(studentNumber, SIGN_IN_COL))
                     {
-                        MessageBox.Show("\"" + studentNumber + "\" has already signed in!", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        form.flashSignInPanel();
                         return false;
                     }
                     query += SIGN_IN_COL + "= #" + logTime + "#";
@@ -180,7 +189,7 @@ namespace StudentCardScanner.Model
                 case SIGN_OUT:
                     if (!IsFieldNullAtSUNumber(studentNumber, SIGN_OUT_COL))
                     {
-                        MessageBox.Show("\"" + studentNumber + "\" has already signed out!", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        form.flashSignInPanel();
                         return false;
                     }
                     query += SIGN_OUT_COL + "= #" + logTime + "#";
