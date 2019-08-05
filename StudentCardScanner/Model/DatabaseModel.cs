@@ -181,7 +181,7 @@ namespace StudentCardScanner.Model
                 case SIGN_IN:
                     if (!IsFieldNullAtSUNumber(studentNumber, SIGN_IN_COL))
                     {
-                        form.flashSignInPanel();
+                        form.FlashSignInPanel();
                         return false;
                     }
                     query += SIGN_IN_COL + "= #" + logTime + "#";
@@ -189,7 +189,7 @@ namespace StudentCardScanner.Model
                 case SIGN_OUT:
                     if (!IsFieldNullAtSUNumber(studentNumber, SIGN_OUT_COL))
                     {
-                        form.flashSignInPanel();
+                        form.FlashSignInPanel();
                         return false;
                     }
                     query += SIGN_OUT_COL + "= #" + logTime + "#";
@@ -353,6 +353,7 @@ namespace StudentCardScanner.Model
                 this.dataGrid.Columns[1].Width = 180;
                 this.dataGrid.Columns[2].Width = 180;
                 this.dataGrid.ColumnHeadersHeight = 50;
+                this.form.SetTotalSignIns(this.dataGrid.RowCount);
             }));
 
             con.Close();

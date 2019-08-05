@@ -48,7 +48,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonDashboard_Click(object sender, EventArgs e)
+        private void ButtonDashboard_Click(object sender, EventArgs e)
         {
             panelLeft.Height = buttonDashboard.Height;
             panelLeft.Top = buttonDashboard.Top;
@@ -65,7 +65,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonScan_Click(object sender, EventArgs e)
+        private void ButtonScan_Click(object sender, EventArgs e)
         {
             panelLeft.Height = buttonScan.Height;
             panelLeft.Top = buttonScan.Top;
@@ -82,7 +82,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonExport_Click(object sender, EventArgs e)
+        private void ButtonExport_Click(object sender, EventArgs e)
         {
             panelLeft.Height = buttonExport.Height;
             panelLeft.Top = buttonExport.Top;
@@ -116,7 +116,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void linkGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LinkTo("https://github.com/DavidBakerEffendi");
         }
@@ -126,7 +126,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void pictureLogo_Click(object sender, EventArgs e)
+        private void PictureLogo_Click(object sender, EventArgs e)
         {
             LinkTo("https://github.com/DavidBakerEffendi/student-card-scanner");
         }
@@ -151,35 +151,35 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonExit_MouseEnter(object sender, EventArgs e) => buttonExit.BackColor = Color.FromArgb(1, 244, 81, 30);
+        private void ButtonExit_MouseEnter(object sender, EventArgs e) => buttonExit.BackColor = Color.FromArgb(1, 244, 81, 30);
 
         /// <summary>
         /// Changes the colour of the exit button back to the original colour of the form.
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonExit_MouseLeave(object sender, EventArgs e) => buttonExit.BackColor = Color.FromArgb(255, 33, 33, 33);
+        private void ButtonExit_MouseLeave(object sender, EventArgs e) => buttonExit.BackColor = Color.FromArgb(255, 33, 33, 33);
 
         /// <summary>
         /// Exits the application once the user clicks on the exit button.
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonExit_Click(object sender, EventArgs e) => Application.Exit();
+        private void ButtonExit_Click(object sender, EventArgs e) => Application.Exit();
 
         /// <summary>
         /// Minimizes the application when the user clicks on the minimize button.
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonMinimize_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
+        private void ButtonMinimize_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
 
         /// <summary>
         /// Allows the application to be moved around the screen when dragged on the toolbar panel.
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void panelToolbar_MouseDown(object sender, MouseEventArgs e)
+        private void PanelToolbar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -193,7 +193,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonNew_Click(object sender, EventArgs e)
+        private void ButtonNew_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.FileName = "NewDatabase.accdb";
@@ -248,7 +248,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonOpenDb_Click(object sender, EventArgs e)
+        private void ButtonOpenDb_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.DefaultExt = "accdb";
@@ -342,7 +342,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonCloseDb_Click(object sender, EventArgs e)
+        private void ButtonCloseDb_Click(object sender, EventArgs e)
         {
             CloseDatabasePanel();
             if (!this.databaseModel.GetCurrentFileName().Equals(""))
@@ -356,7 +356,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonDeleteDb_Click(object sender, EventArgs e)
+        private void ButtonDeleteDb_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you would like to delete '" + this.databaseModel.GetCurrentFileName() + "'?","Confirm delete action", 
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
@@ -393,7 +393,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonSelectExportDB_Click(object sender, EventArgs e)
+        private void ButtonSelectExportDB_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.DefaultExt = "accdb";
@@ -418,7 +418,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void selectExportOption_CLick(object sender, EventArgs e)
+        private void SelectExportOption_CLick(object sender, EventArgs e)
         {
             if (this.radioButtonExcel.Checked) { this.exportModel.setExportFileType(".xlsx"); }
             else if (this.radioButtonCSV.Checked) { this.exportModel.setExportFileType(".csv"); }
@@ -430,7 +430,7 @@ namespace StudentCardScanner
         /// </summary>
         /// <param name="sender">Sender of the request.</param>
         /// <param name="e">Event arguments.</param>
-        private void buttonExportDB_Click(object sender, EventArgs e)
+        private void ButtonExportDB_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.FileName = "NewDatabase" + this.exportModel.getExportFileType();
@@ -462,7 +462,7 @@ namespace StudentCardScanner
         /// <summary>
         /// Flashes the student number display panel from primary blue to secondary red back to primary blue.
         /// </summary>
-        public void flashSignInPanel()
+        public void FlashSignInPanel()
         {
             if (this.Controls[0].InvokeRequired)
             {
@@ -479,6 +479,11 @@ namespace StudentCardScanner
                     panelLastSignIn.BackColor = Color.FromArgb(62, 80, 180);
                 }));
             }
+        }
+
+        public void SetTotalSignIns(int count)
+        {
+            this.labelTotalSignInCount.Text = count.ToString();
         }
     }
 }
